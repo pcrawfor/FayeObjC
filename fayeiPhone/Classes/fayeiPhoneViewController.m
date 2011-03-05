@@ -12,6 +12,9 @@
 
 @synthesize faye;
 @synthesize connected;
+@synthesize messageTextField;
+@synthesize editToolbar;
+@synthesize messageView;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -35,13 +38,46 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+  [nc addObserver:self selector:@selector(keyboardWillShow:) name: UIKeyboardWillShowNotification object:nil];  
+  [nc addObserver:self selector:@selector(keyboardWillHide:) name: UIKeyboardWillHideNotification object:nil];    
+  
   self.connected = NO;
   self.faye = [[FayeClient alloc] initWithURLString:@"ws://localhost:8000/faye" channel:@"/chat"];
   self.faye.delegate = self;
   [faye connectToServer];
 }
 
+- (void) keyboardWillShow:(NSNotification *)notification {  
+  CGRect rect = editToolbar.frame, keyboardFrame;
+  [[notification.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue:&keyboardFrame];  
+  rect.origin.y -= keyboardFrame.size.height;      
+  
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:0.3];
+  editToolbar.frame = rect;  
+  messageView.frame = CGRectMake(0, 0, 320, messageView.frame.size.height-keyboardFrame.size.height);  
+  [UIView commitAnimations];
+}
 
+- (void) keyboardWillHide:(NSNotification *)notification {
+  CGRect rect = editToolbar.frame, keyboardFrame;
+  [[notification.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue:&keyboardFrame];  
+  rect.origin.y += keyboardFrame.size.height;      
+  
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:0.3];
+  editToolbar.frame = rect;  
+  messageView.frame = CGRectMake(0, 0, 320, messageView.frame.size.height+keyboardFrame.size.height);  
+  [UIView commitAnimations];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  DLog(@"text field should return");
+  [self sendMessage];
+  return YES;
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -51,11 +87,25 @@
 }
 */
 
+- (IBAction) sendMessage {
+  DLog(@"send message %@", messageTextField.text);    
+  NSString *message = [NSString stringWithString:messageTextField.text];
+  NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys:message, @"message", nil];  
+  [self.faye publishDict:messageDict];
+  self.messageTextField.text = @"";
+}
+
+- (IBAction) hideKeyboard {
+  self.messageTextField.text = @"";
+  [self.messageTextField resignFirstResponder];
+}
+
 #pragma mark -
 #pragma mark FayeObjc delegate
 - (void) messageReceived:(NSDictionary *)messageDict {
   DLog(@"message recieved %@", messageDict);
   if([messageDict objectForKey:@"message"]) {    
+    self.messageView.text = [self.messageView.text stringByAppendingString:[NSString stringWithFormat:@"%@\n", [messageDict objectForKey:@"message"]]]; 
     //[self.messagesText insertText:[NSString stringWithFormat:@"%@\n", [messageDict objectForKey:@"message"]]];
   }
 }
@@ -78,11 +128,8 @@
 
 #pragma mark -
 #pragma mark Memory management
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
+- (void)didReceiveMemoryWarning {	
+  [super didReceiveMemoryWarning];
 }
 
 - (void)viewDidUnload {
@@ -90,8 +137,10 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
 - (void)dealloc {
+  [messageTextField release];
+	[editToolbar release];
+  [messageView release];
   faye.delegate = nil;
   [faye release];
   [super dealloc];
