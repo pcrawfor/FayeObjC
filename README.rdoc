@@ -2,7 +2,7 @@
 
 A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implementing on top of the zimt Objective-C web socket library and will work on both Mac and iPhone projects.
 
-= Working with the library
+= Building the library
 
 Using it in a Mac project:
 
@@ -40,6 +40,8 @@ Getting YAJL to build:
 * Under `Other Linker Flags` in your target, add `-ObjC` and `-all_load`
 
 Add the CFNetwork.framework to your project by right clicking on Linked Frameworks in the Project and selecting Add->Existing Frameworks...
+
+== Working with the library
 
 Initialize a Client:
   // import the client
