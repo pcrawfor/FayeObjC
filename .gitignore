@@ -1,6 +1,7 @@
 .DS_Store
 
 fayeMac/build/
+fayeiPhone/build/
 
 *.pbxuser
 *.perspective
