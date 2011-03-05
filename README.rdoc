@@ -25,9 +25,14 @@ Implement the FayeClientDelegate:
     // Faye disconnected
   }
 
-= Example Project
+Example Project:
 
 Included in the repository is a sample XCode project for Mac that provides a simple client application for interacting with Faye servers.  Try it out and have a look at the code for an illustration on the usage of the library.
+
+The fayeMac sample project allows you to test out any Faye server.
+
+= Faye
+Faye is a simple JSON based Pub-Sub server which has support for node.js and Ruby (using Rack).
 
 Check out the Faye project here:
 * http://faye.jcoglan.com
