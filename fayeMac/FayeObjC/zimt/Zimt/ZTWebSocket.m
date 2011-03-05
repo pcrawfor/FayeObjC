@@ -34,7 +34,7 @@ enum {
         self.delegate = aDelegate;
         url = [[NSURL URLWithString:urlString] retain];
         if (![url.scheme isEqualToString:@"ws"]) {
-            [NSException raise:ZTWebSocketException format:[NSString stringWithFormat:@"Unsupported protocol %@",url.scheme]];
+            [NSException raise:ZTWebSocketException format:@"Unsupported protocol %@", url.scheme];
         }
         socket = [[AsyncSocket alloc] initWithDelegate:self];
         self.runLoopModes = [NSArray arrayWithObjects:NSRunLoopCommonModes, nil]; 
