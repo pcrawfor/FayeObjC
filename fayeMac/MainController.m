@@ -123,6 +123,7 @@
   self.serverField = nil;
   self.channelField = nil;
   self.connectBtn = nil;
+  faye.delegate = nil;
   [faye release];
   [serverURLString release];
   [serverChannelString release];

@@ -28,6 +28,20 @@
 #import "FayeClient.h"
 #import "FayeMessage.h"
 
+@interface FayeClient (Private)
+
+- (void) openWebSocketConnection;
+- (void) closeWebSocketConnection;
+- (void) connect;
+- (void) disconnect;
+- (void) handshake;
+- (void) subscribe;
+- (void) publish:(NSDictionary *)messageDict;
+- (void) parseFayeMessage:(NSString *)message;
+
+@end
+
+
 @implementation FayeClient
 
 @synthesize fayeURLString;
@@ -67,16 +81,79 @@
 - (void) disconnectFromServer {  
   [self disconnect];  
 }
+   
+- (void) publishDict:(NSDictionary *)messageDict {
+  [self publish:messageDict];
+}
 
+#pragma mark -
+#pragma mark WebSocket Delegate
+
+#pragma mark -
+#pragma mark webSocket
+-(void)webSocketDidClose:(ZTWebSocket *)webSocket {
+  NSLog(@"WEBSOCKET DID CLOSE");
+  self.webSocketConnected = NO;  
+}
+
+-(void)webSocket:(ZTWebSocket *)webSocket didFailWithError:(NSError *)error {
+  NSLog(@"WEBSOCKET DID FAIL");
+  if (error.code == ZTWebSocketErrorConnectionFailed) {
+    NSLog(@"Connection failed %@", [error localizedDescription]);
+  } else if (error.code == ZTWebSocketErrorHandshakeFailed) {
+    NSLog(@"Handshake failed %@", [error localizedDescription]);
+  } else {
+    NSLog(@"Error %@", [error localizedDescription]);
+  }
+}
+
+-(void)webSocket:(ZTWebSocket *)webSocket didReceiveMessage:(NSString*)message {
+  NSLog(@"WEBSOCKET DID RECEIVE MESSAGE");  
+  [self parseFayeMessage:message];
+}
+
+-(void)webSocketDidOpen:(ZTWebSocket *)aWebSocket {
+  NSLog(@"WEBSOCKET Connected");  
+  self.webSocketConnected = YES;  
+  [self handshake];    
+}
+
+-(void)webSocketDidSendMessage:(ZTWebSocket *)webSocket {
+  NSLog(@"WEBSOCKET DID SEND MESSAGE");
+}
+
+#pragma mark -
+#pragma mark Deallocation
+- (void) dealloc
+{
+  self.delegate = nil;
+  [webSocket release];
+  [fayeURLString release];
+  [fayeClientId release];
+  [activeSubChannel release];  
+  [super dealloc];
+}
+
+@end
+
+#pragma mark -
+#pragma mark Private
+@implementation FayeClient (Private)
+
+#pragma mark -
+#pragma mark WebSocket connection
 - (void) openWebSocketConnection {
   self.webSocket = [[ZTWebSocket alloc] initWithURLString:self.fayeURLString delegate:self];
   [webSocket open];	    
 }
 
 - (void) closeWebSocketConnection { 
- [webSocket close];	    
+  [webSocket close];	    
 }
-   
+
+#pragma mark -
+#pragma mark Private Bayeux procotol functions
+
 /* 
  Bayeux Handshake
  "channel": "/meta/handshake",
@@ -96,7 +173,7 @@
  "channel": "/meta/connect",
  "clientId": "Un1q31d3nt1f13r",
  "connectionType": "long-polling"
-*/
+ */
 - (void) connect {
   NSLog(@"Connect");
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:CONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", @"websocket", @"connectionType", nil];
@@ -153,7 +230,7 @@
  "id": "some unique message id"
  }
  */
-- (void) publishDict:(NSDictionary *)messageDict {
+- (void) publish:(NSDictionary *)messageDict {
   NSLog(@"Publish");
   NSString *channel = self.activeSubChannel;
   NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", [[NSDate date] timeIntervalSince1970], 1];
@@ -162,6 +239,8 @@
   [webSocket send:json];
 }
 
+#pragma mark -
+#pragma mark Faye message handling
 - (void) parseFayeMessage:(NSString *)message {
   // interpret the message(s) 
   NSArray *messageArray = [message yajl_JSON];    
@@ -224,60 +303,11 @@
       } else {
         NSLog(@"NO DATA");
       }
-
+      
     } else {
       NSLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
     }
   }    
 }
-
-#pragma mark -
-#pragma mark WebSocket Delegate
-
-#pragma mark -
-#pragma mark webSocket
--(void)webSocketDidClose:(ZTWebSocket *)webSocket {
-  NSLog(@"WEBSOCKET DID CLOSE");
-  self.webSocketConnected = NO;  
-}
-
--(void)webSocket:(ZTWebSocket *)webSocket didFailWithError:(NSError *)error {
-  NSLog(@"WEBSOCKET DID FAIL");
-  if (error.code == ZTWebSocketErrorConnectionFailed) {
-    NSLog(@"Connection failed %@", [error localizedDescription]);
-  } else if (error.code == ZTWebSocketErrorHandshakeFailed) {
-    NSLog(@"Handshake failed %@", [error localizedDescription]);
-  } else {
-    NSLog(@"Error %@", [error localizedDescription]);
-  }
-}
-
--(void)webSocket:(ZTWebSocket *)webSocket didReceiveMessage:(NSString*)message {
-  NSLog(@"WEBSOCKET DID RECEIVE MESSAGE");  
-  [self parseFayeMessage:message];
-}
-
--(void)webSocketDidOpen:(ZTWebSocket *)aWebSocket {
-  NSLog(@"WEBSOCKET Connected");  
-  self.webSocketConnected = YES;  
-  [self handshake];    
-}
-
--(void)webSocketDidSendMessage:(ZTWebSocket *)webSocket {
-  NSLog(@"WEBSOCKET DID SEND MESSAGE");
-}
-
-#pragma mark -
-#pragma mark Deallocation
-- (void) dealloc
-{
-  self.delegate = nil;
-  [webSocket release];
-  [fayeURLString release];
-  [fayeClientId release];
-  [activeSubChannel release];  
-  [super dealloc];
-}
-
 
 @end
