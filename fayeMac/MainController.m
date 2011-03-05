@@ -36,7 +36,7 @@
   }
   if([defaults objectForKey:SERVER_CHANNEL_STRING]) {
     self.serverURLString = [defaults objectForKey:SERVER_CHANNEL_STRING];
-    [self.serverField setStringValue:self.serverURLString];
+    [self.channelField setStringValue:self.serverURLString];
   }
 }
 
@@ -91,10 +91,7 @@
       [self.channelField setStringValue:self.serverChannelString];
     }
   }  
-  
-  
-  
-  DLog(@"check");
+        
   if([self.serverChannelString length] == 0 || [self.serverURLString length] == 0) {    
     NSAlert *myAlert = [NSAlert alertWithMessageText:(@"Enter Server Info") defaultButton:(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@"You must enter both a server URL and a Faye channel to subscribe to."];
     [myAlert beginSheetModalForWindow:[(fayeMacAppDelegate *)[[NSApplication sharedApplication] delegate] window] modalDelegate:nil didEndSelector:nil contextInfo:nil];    
