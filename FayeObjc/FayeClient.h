@@ -52,7 +52,7 @@ enum _fayeStates {
 @end
 
 
-@interface FayeConnector : NSObject <ZTWebSocketDelegate> {
+@interface FayeClient : NSObject <ZTWebSocketDelegate> {
   NSString *fayeURLString;
   ZTWebSocket* webSocket;
   NSString *fayeClientId;
@@ -70,7 +70,7 @@ enum _fayeStates {
 @property (retain) NSString *activeSubChannel;
 @property (assign) id <FayeConnectorDelegate> delegate;
 
-- (id) initWithURLString:(NSString *)aFayeURLString;
+- (id) initWithURLString:(NSString *)aFayeURLString channel:(NSString *)channel;
 - (void) connectToServer;
 - (void) disconnectFromServer;
 - (void) openWebSocketConnection;

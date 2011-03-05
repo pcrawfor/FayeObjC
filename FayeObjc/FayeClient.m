@@ -25,10 +25,10 @@
 //  fayeMac
 //
 
-#import "FayeConnector.h"
+#import "FayeClient.h"
 #import "FayeMessage.h"
 
-@implementation FayeConnector
+@implementation FayeClient
 
 @synthesize fayeURLString;
 @synthesize webSocket;
@@ -42,14 +42,14 @@
  Example websocket url string
  // ws://localhost:8000/faye
  */
-- (id) initWithURLString:(NSString *)aFayeURLString
+- (id) initWithURLString:(NSString *)aFayeURLString channel:(NSString *)channel
 {
   self = [super init];
   if (self != nil) {
     self.fayeURLString = aFayeURLString;
     self.webSocketConnected = NO;
     self.fayeConnected = NO;
-    self.activeSubChannel = nil;  
+    self.activeSubChannel = channel;  
   }
   return self;
 }
@@ -82,13 +82,13 @@
  "channel": "/meta/handshake",
  "version": "1.0",
  "minimumVersion": "1.0beta",
- "supportedConnectionTypes": ["long-polling", "callback-polling", "iframe"]
+ "supportedConnectionTypes": ["long-polling", "callback-polling", "iframe", "websocket]
  */
 - (void) handshake {
   NSArray *connTypes = [NSArray arrayWithObjects:@"long-polling", @"callback-polling", @"iframe", @"websocket", nil];   
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:HANDSHAKE_CHANNEL, @"channel", @"1.0", @"version", @"1.0beta", @"minimumVersion", connTypes, @"supportedConnectionTypes", nil];
   NSString *json = [dict yajl_JSONString];
-  [webSocket send:json];
+  [webSocket send:json];  
 }
 
 /*
@@ -126,7 +126,7 @@
  */
 - (void) subscribe {
   DLog(@"Subscribe");
-  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", @"/foobar", @"subscription", nil];
+  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
   NSString *json = [dict yajl_JSONString];    
   [webSocket send:json];
 }
@@ -140,7 +140,7 @@
  */
 - (void) unsubscribe {
   DLog(@"Unsubscribe");
-  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:UNSUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", @"/foobar", @"subscription", nil];
+  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:UNSUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
   NSString *json = [dict yajl_JSONString];  
   [webSocket send:json];
 }
@@ -207,9 +207,9 @@
         DLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);
         DLog(@"SUBSCRIPTION CLASS %@", [fm.subscription className]);
         
-        NSString *test = [[fm.subscription stringByReplacingOccurrencesOfString:@"(\n    \"" withString:@""] stringByReplacingOccurrencesOfString:@"\"\n)" withString:@""];
-        DLog(@"TEST-%@", test);
-        self.activeSubChannel = test;
+        //NSString *test = [[fm.subscription stringByReplacingOccurrencesOfString:@"(\n    \"" withString:@""] stringByReplacingOccurrencesOfString:@"\"\n)" withString:@""];
+        //DLog(@"TEST-%@", test);
+        //self.activeSubChannel = test;
       } else {
         DLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
       }
