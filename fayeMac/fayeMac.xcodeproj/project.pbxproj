@@ -22,7 +22,7 @@
 		5DD104C11321886400E49150 /* NSDictionary+KeyTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A41321886400E49150 /* NSDictionary+KeyTranslation.m */; };
 		5DD104C21321886400E49150 /* NSObject+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A61321886400E49150 /* NSObject+Serialize.m */; };
 		5DD104C31321886400E49150 /* NSString+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A81321886400E49150 /* NSString+Serialize.m */; };
-		5DD104C41321886400E49150 /* FayeConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104AA1321886400E49150 /* FayeConnector.m */; };
+		5DD104C41321886400E49150 /* FayeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104AA1321886400E49150 /* FayeClient.m */; };
 		5DD104C51321886400E49150 /* FayeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104AC1321886400E49150 /* FayeMessage.m */; };
 		5DD104C61321886400E49150 /* AsyncSocket Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5DD104B01321886400E49150 /* AsyncSocket Documentation.html */; };
 		5DD104C71321886400E49150 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104B21321886400E49150 /* AsyncSocket.m */; };
@@ -83,8 +83,8 @@
 		5DD104A61321886400E49150 /* NSObject+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Serialize.m"; path = "FayeObjC/Extensions/Serialize/NSObject+Serialize.m"; sourceTree = SOURCE_ROOT; };
 		5DD104A71321886400E49150 /* NSString+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Serialize.h"; path = "FayeObjC/Extensions/Serialize/NSString+Serialize.h"; sourceTree = SOURCE_ROOT; };
 		5DD104A81321886400E49150 /* NSString+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Serialize.m"; path = "FayeObjC/Extensions/Serialize/NSString+Serialize.m"; sourceTree = SOURCE_ROOT; };
-		5DD104A91321886400E49150 /* FayeConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FayeConnector.h; path = FayeObjC/FayeConnector.h; sourceTree = SOURCE_ROOT; };
-		5DD104AA1321886400E49150 /* FayeConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FayeConnector.m; path = FayeObjC/FayeConnector.m; sourceTree = SOURCE_ROOT; };
+		5DD104A91321886400E49150 /* FayeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FayeClient.h; sourceTree = "<group>"; };
+		5DD104AA1321886400E49150 /* FayeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FayeClient.m; sourceTree = "<group>"; };
 		5DD104AB1321886400E49150 /* FayeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FayeMessage.h; path = FayeObjC/FayeMessage.h; sourceTree = SOURCE_ROOT; };
 		5DD104AC1321886400E49150 /* FayeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FayeMessage.m; path = FayeObjC/FayeMessage.m; sourceTree = SOURCE_ROOT; };
 		5DD104B01321886400E49150 /* AsyncSocket Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "AsyncSocket Documentation.html"; path = "FayeObjC/zimt/Vendor/AsyncSocket/AsyncSocket Documentation.html"; sourceTree = SOURCE_ROOT; };
@@ -210,8 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				5DD104951321886400E49150 /* Extensions */,
-				5DD104A91321886400E49150 /* FayeConnector.h */,
-				5DD104AA1321886400E49150 /* FayeConnector.m */,
+				5DD104A91321886400E49150 /* FayeClient.h */,
+				5DD104AA1321886400E49150 /* FayeClient.m */,
 				5DD104AB1321886400E49150 /* FayeMessage.h */,
 				5DD104AC1321886400E49150 /* FayeMessage.m */,
 				5DD104AD1321886400E49150 /* zimt */,
@@ -378,7 +378,7 @@
 				5DD104C11321886400E49150 /* NSDictionary+KeyTranslation.m in Sources */,
 				5DD104C21321886400E49150 /* NSObject+Serialize.m in Sources */,
 				5DD104C31321886400E49150 /* NSString+Serialize.m in Sources */,
-				5DD104C41321886400E49150 /* FayeConnector.m in Sources */,
+				5DD104C41321886400E49150 /* FayeClient.m in Sources */,
 				5DD104C51321886400E49150 /* FayeMessage.m in Sources */,
 				5DD104C71321886400E49150 /* AsyncSocket.m in Sources */,
 				5DD104C81321886400E49150 /* AsyncUdpSocket.m in Sources */,

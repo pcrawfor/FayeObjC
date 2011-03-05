@@ -25,10 +25,10 @@
 //  fayeMac
 //
 
-#import "FayeConnector.h"
+#import "FayeClient.h"
 #import "FayeMessage.h"
 
-@implementation FayeConnector
+@implementation FayeClient
 
 @synthesize fayeURLString;
 @synthesize webSocket;

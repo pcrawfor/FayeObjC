@@ -52,7 +52,7 @@ enum _fayeStates {
 @end
 
 
-@interface FayeConnector : NSObject <ZTWebSocketDelegate> {
+@interface FayeClient : NSObject <ZTWebSocketDelegate> {
   NSString *fayeURLString;
   ZTWebSocket* webSocket;
   NSString *fayeClientId;

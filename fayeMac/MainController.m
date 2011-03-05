@@ -102,7 +102,7 @@
   }
   
   self.faye = nil;
-  self.faye = [[FayeConnector alloc] initWithURLString:self.serverURLString channel:self.serverChannelString];
+  self.faye = [[FayeClient alloc] initWithURLString:self.serverURLString channel:self.serverChannelString];
   self.faye.delegate = self;
   [faye connectToServer];    
 }

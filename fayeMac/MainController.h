@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "FayeConnector.h"
+#import "FayeClient.h"
 
 @interface MainController : NSObject <FayeConnectorDelegate> {
   NSTextView *messagesText;
@@ -15,7 +15,7 @@
   NSTextField *messageField;
   NSTextField *serverField;
   NSTextField *channelField;  
-  FayeConnector *faye;
+  FayeClient *faye;
   NSButton *connectBtn;
   NSString *serverURLString;
   NSString *serverChannelString;
@@ -28,7 +28,7 @@
 @property (retain) IBOutlet NSTextField *messageField;
 @property (retain) IBOutlet NSTextField *serverField;
 @property (retain) IBOutlet NSTextField *channelField;  
-@property (retain) FayeConnector *faye;
+@property (retain) FayeClient *faye;
 @property (retain) IBOutlet NSButton *connectBtn;
 @property (retain) NSString *serverURLString;
 @property (retain) NSString *serverChannelString;
