@@ -22,7 +22,7 @@
 
 //
 //  FayeMessage.h
-//  fayeMac
+//  FayeObjC
 //
 
 #ifdef __MAC_OS_X_VERSION_MAX_ALLOWED

@@ -21,8 +21,8 @@
  THE SOFTWARE. */
 
 //
-//  Faye.m
-//  fayeMac
+//  FayeClient.m
+//  FayeObjC
 //
 
 #import "FayeClient.h"

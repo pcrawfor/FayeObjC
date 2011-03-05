@@ -22,7 +22,7 @@
 
 //
 //  FayeMessage.m
-//  fayeMac
+//  FayeObjC
 //
 
 #import "FayeMessage.h"
