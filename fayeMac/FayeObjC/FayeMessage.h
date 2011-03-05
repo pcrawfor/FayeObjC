@@ -25,8 +25,11 @@
 //  fayeMac
 //
 
-#import <Cocoa/Cocoa.h>
-
+#ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
+  #import <Cocoa/Cocoa.h>
+#else
+  #import <UIKit/UIKit.h>
+#endif
 /*
  Represents the faye message structure
  */

@@ -425,7 +425,10 @@
 				GCC_PREFIX_HEADER = fayeMac_Prefix.pch;
 				INFOPLIST_FILE = "fayeMac-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../fayeiPhone/Classes/libYAJLIPhone_40Compatible\"",
+				);
 				PRODUCT_NAME = fayeMac;
 			};
 			name = Debug;
@@ -448,6 +451,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/libYAJLIPhone_40Compatible\"",
 					"\"$(SRCROOT)/zimt/src/build/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../fayeiPhone/Classes/libYAJLIPhone_40Compatible\"",
 				);
 				PRODUCT_NAME = fayeMac;
 			};

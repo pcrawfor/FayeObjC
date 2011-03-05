@@ -24,11 +24,15 @@
 //  Faye.h
 //  fayeMac
 //
+#ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
+  #import <Cocoa/Cocoa.h>
+  #import <YAJL/YAJL.h>
+#else
+  #import <UIKit/UIKit.h>
+  #import "NSObject+YAJL.h"
+#endif
 
-#import <Cocoa/Cocoa.h>
 #import "ZTWebSocket.h"
-#import <YAJL/YAJL.h>
-
 enum _fayeStates {
   kWebSocketDisconnected,
   kWebSocketConnected,

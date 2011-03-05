@@ -98,7 +98,7 @@
  "connectionType": "long-polling"
 */
 - (void) connect {
-  DLog(@"Connect");
+  NSLog(@"Connect");
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:CONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", @"websocket", @"connectionType", nil];
   NSString *json = [dict yajl_JSONString];  
   [webSocket send:json];
@@ -111,7 +111,7 @@
  }
  */
 - (void) disconnect {
-  DLog(@"Disconnect");
+  NSLog(@"Disconnect");
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:DISCONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", nil];
   NSString *json = [dict yajl_JSONString];  
   [webSocket send:json];
@@ -125,7 +125,7 @@
  }
  */
 - (void) subscribe {
-  DLog(@"Subscribe");
+  NSLog(@"Subscribe");
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
   NSString *json = [dict yajl_JSONString];    
   [webSocket send:json];
@@ -139,7 +139,7 @@
  }
  */
 - (void) unsubscribe {
-  DLog(@"Unsubscribe");
+  NSLog(@"Unsubscribe");
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:UNSUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
   NSString *json = [dict yajl_JSONString];  
   [webSocket send:json];
@@ -154,7 +154,7 @@
  }
  */
 - (void) publishDict:(NSDictionary *)messageDict {
-  DLog(@"Publish");
+  NSLog(@"Publish");
   NSString *channel = self.activeSubChannel;
   NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", [[NSDate date] timeIntervalSince1970], 1];
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:channel, @"channel", self.fayeClientId, @"clientId", messageDict, @"data", messageId, @"id", nil];
@@ -167,12 +167,12 @@
   NSArray *messageArray = [message yajl_JSON];    
   for(NSDictionary *messageDict in messageArray) {
     FayeMessage *fm = [[FayeMessage alloc] initWithDict:messageDict];
-    DLog(@"faye message %@", fm);
+    NSLog(@"faye message %@", fm);
     
     if ([fm.channel isEqualToString:HANDSHAKE_CHANNEL]) {    
       if ([fm.successful boolValue]) {
         self.fayeClientId = fm.clientId;
-        DLog(@"HANDSHAKE SUCCESSFUL"); // TODO: check that websocket is in allowed connection types
+        NSLog(@"HANDSHAKE SUCCESSFUL"); // TODO: check that websocket is in allowed connection types
         if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(connectedToServer)]) {
           [self.delegate connectedToServer];
         }
@@ -180,60 +180,53 @@
         // try to sub right after conn      
         [self subscribe];
       } else {
-        DLog(@"ERROR WITH HANDSHAKE");
+        NSLog(@"ERROR WITH HANDSHAKE");
       }    
     } else if ([fm.channel isEqualToString:CONNECT_CHANNEL]) {
-      DLog(@"CONNECT RESPONSE");
+      NSLog(@"CONNECT RESPONSE");
       if ([fm.successful boolValue]) {
-        DLog(@"CONNECTED TO FAYE!");
+        NSLog(@"CONNECTED TO FAYE!");
         self.fayeConnected = YES;
         [self connect];
       } else {
-        DLog(@"ERROR CONNECTING TO FAYE");
+        NSLog(@"ERROR CONNECTING TO FAYE");
       }
     } else if ([fm.channel isEqualToString:DISCONNECT_CHANNEL]) {
       if ([fm.successful boolValue]) {
-        DLog(@"DISCONNECTED FROM FAYE!");
+        NSLog(@"DISCONNECTED FROM FAYE!");
         self.fayeConnected = NO;  
         [self closeWebSocketConnection];
         if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(disconnectedFromServer)]) {
           [self.delegate disconnectedFromServer];
         }
       } else {
-        DLog(@"ERROR DISCONNECTING TO FAYE");
+        NSLog(@"ERROR DISCONNECTING TO FAYE");
       }
     } else if ([fm.channel isEqualToString:SUBSCRIBE_CHANNEL]) {
       if ([fm.successful boolValue]) {
-        DLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);
-        DLog(@"SUBSCRIPTION CLASS %@", [fm.subscription className]);
-        
-        //NSString *test = [[fm.subscription stringByReplacingOccurrencesOfString:@"(\n    \"" withString:@""] stringByReplacingOccurrencesOfString:@"\"\n)" withString:@""];
-        //DLog(@"TEST-%@", test);
-        //self.activeSubChannel = test;
+        NSLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);
+        NSLog(@"SUBSCRIPTION CLASS %@", [fm.subscription className]);                
       } else {
-        DLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
+        NSLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
       }
     } else if ([fm.channel isEqualToString:UNSUBSCRIBE_CHANNEL]) {
-      DLog(@"UNSUBSCRIBED FROM CHANNEL %@ ON FAYE", fm.subscription);
+      NSLog(@"UNSUBSCRIBED FROM CHANNEL %@ ON FAYE", fm.subscription);
     } else if ([fm.channel isEqualToString:self.activeSubChannel]) {
-      DLog(@"MESSAGE FROM CHANNEL! %@", self.activeSubChannel);
+      NSLog(@"MESSAGE FROM CHANNEL! %@", self.activeSubChannel);
       if (fm.successful) {
-        DLog(@"MESSAGE EVENT SUCCESSFUL");
+        NSLog(@"MESSAGE EVENT SUCCESSFUL");
       }
       
-      if(fm.data) {
-        DLog(@"MESSAGE: %@", fm.data);
-        DLog(@"keys %@", [fm.data allKeys]);
-        DLog(@"values %@", [fm.data allValues]);
+      if(fm.data) {        
         if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(messageReceived:)]) {
           [self.delegate messageReceived:fm.data];
         }
       } else {
-        DLog(@"NO DATA");
+        NSLog(@"NO DATA");
       }
 
     } else {
-      DLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
+      NSLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
     }
   }    
 }
@@ -244,34 +237,34 @@
 #pragma mark -
 #pragma mark webSocket
 -(void)webSocketDidClose:(ZTWebSocket *)webSocket {
-  DLog(@"WEBSOCKET DID CLOSE");
+  NSLog(@"WEBSOCKET DID CLOSE");
   self.webSocketConnected = NO;  
 }
 
 -(void)webSocket:(ZTWebSocket *)webSocket didFailWithError:(NSError *)error {
-  DLog(@"WEBSOCKET DID FAIL");
+  NSLog(@"WEBSOCKET DID FAIL");
   if (error.code == ZTWebSocketErrorConnectionFailed) {
-    DLog(@"Connection failed %@", [error localizedDescription]);
+    NSLog(@"Connection failed %@", [error localizedDescription]);
   } else if (error.code == ZTWebSocketErrorHandshakeFailed) {
-    DLog(@"Handshake failed %@", [error localizedDescription]);
+    NSLog(@"Handshake failed %@", [error localizedDescription]);
   } else {
-    DLog(@"Error %@", [error localizedDescription]);
+    NSLog(@"Error %@", [error localizedDescription]);
   }
 }
 
 -(void)webSocket:(ZTWebSocket *)webSocket didReceiveMessage:(NSString*)message {
-  DLog(@"WEBSOCKET DID RECEIVE MESSAGE");  
+  NSLog(@"WEBSOCKET DID RECEIVE MESSAGE");  
   [self parseFayeMessage:message];
 }
 
 -(void)webSocketDidOpen:(ZTWebSocket *)aWebSocket {
-  DLog(@"WEBSOCKET Connected");  
+  NSLog(@"WEBSOCKET Connected");  
   self.webSocketConnected = YES;  
   [self handshake];    
 }
 
 -(void)webSocketDidSendMessage:(ZTWebSocket *)webSocket {
-  DLog(@"WEBSOCKET DID SEND MESSAGE");
+  NSLog(@"WEBSOCKET DID SEND MESSAGE");
 }
 
 #pragma mark -

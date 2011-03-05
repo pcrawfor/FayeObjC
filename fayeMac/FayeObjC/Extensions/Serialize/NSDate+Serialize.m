@@ -18,7 +18,7 @@
   if([value isKindOfClass:[NSDate class]]) {    
     return [value convertToUTC];
   } else {
-    DLog(@"didn't match %@",[NSDate class]); 
+    NSLog(@"didn't match %@",[NSDate class]); 
   }
   
   if([NSNull null] == value)
