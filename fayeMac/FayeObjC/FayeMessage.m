@@ -1,6 +1,6 @@
 /* The MIT License
  
- Copyright (c) 2010 Paul Crawford
+ Copyright (c) 2011 Paul Crawford
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
