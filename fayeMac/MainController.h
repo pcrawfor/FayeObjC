@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "FayeClient.h"
 
-@interface MainController : NSObject <FayeConnectorDelegate> {
+@interface MainController : NSObject <FayeClientDelegate> {
   NSTextView *messagesText;
   NSButton *sendBtn;
   NSTextField *messageField;

@@ -47,7 +47,7 @@ enum _fayeStates {
 #define SUBSCRIBE_CHANNEL @"/meta/subscribe"
 #define UNSUBSCRIBE_CHANNEL @"/meta/unsubscribe"
 
-@protocol FayeConnectorDelegate <NSObject>
+@protocol FayeClientDelegate <NSObject>
 
 - (void)messageReceived:(NSDictionary *)messageDict;
 - (void)connectedToServer;
@@ -63,7 +63,7 @@ enum _fayeStates {
   BOOL webSocketConnected;
   BOOL fayeConnected;  
   NSString *activeSubChannel;
-  id <FayeConnectorDelegate> delegate;
+  id <FayeClientDelegate> delegate;
 }
 
 @property (retain) NSString *fayeURLString;
@@ -72,7 +72,7 @@ enum _fayeStates {
 @property (assign) BOOL webSocketConnected;
 @property (assign) BOOL fayeConnected;
 @property (retain) NSString *activeSubChannel;
-@property (assign) id <FayeConnectorDelegate> delegate;
+@property (assign) id <FayeClientDelegate> delegate;
 
 - (id) initWithURLString:(NSString *)aFayeURLString channel:(NSString *)channel;
 - (void) connectToServer;
