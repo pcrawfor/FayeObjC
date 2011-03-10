@@ -91,8 +91,12 @@
 
 #pragma mark -
 #pragma mark webSocket
--(void)webSocketDidClose:(ZTWebSocket *)webSocket {  
+-(void)webSocketDidClose:(ZTWebSocket *)webSocket {    
   self.webSocketConnected = NO;  
+  self.fayeConnected = NO;  
+  if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(disconnectedFromServer)]) {
+    [self.delegate disconnectedFromServer];
+  }  
 }
 
 -(void)webSocket:(ZTWebSocket *)webSocket didFailWithError:(NSError *)error {  

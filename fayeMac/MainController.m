@@ -38,6 +38,9 @@
     self.serverURLString = [defaults objectForKey:SERVER_CHANNEL_STRING];
     [self.channelField setStringValue:self.serverURLString];
   }
+  
+  [self.messageField setTarget:self];
+  [self.messageField setAction:@selector(sendMessage:)];
 }
 
 #pragma mark -
@@ -98,6 +101,12 @@
     return;
   }
   
+  if([self.serverChannelString length] == 0 || [self.serverURLString length] == 0) {    
+    NSAlert *myAlert = [NSAlert alertWithMessageText:(@"Only Web socket connections are supported") defaultButton:(@"OK") alternateButton:nil otherButton:nil informativeTextWithFormat:@"You must enter both a server URL and a Faye channel to subscribe to."];
+    [myAlert beginSheetModalForWindow:[(fayeMacAppDelegate *)[[NSApplication sharedApplication] delegate] window] modalDelegate:nil didEndSelector:nil contextInfo:nil];    
+    return;
+  }
+  
   self.faye = nil;
   self.faye = [[FayeClient alloc] initWithURLString:self.serverURLString channel:self.serverChannelString];
   self.faye.delegate = self;
@@ -105,6 +114,7 @@
 }
 
 - (IBAction) disconnectFromServer:(id)sender {
+  DLog(@"Disconnected!");
   [self.faye disconnectFromServer];
 }
 
