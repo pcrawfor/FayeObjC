@@ -49,11 +49,21 @@ Included in the repository is a sample XCode project for Mac that provides a sim
 
 The fayeMac sample project allows you to test out any Faye server.
 
+= Credits
+
 = Faye
 Faye is a simple JSON based Pub-Sub server which has support for node.js and Ruby (using Rack).
 
 Check out the Faye project here:
 * http://faye.jcoglan.com
+
+= ZTWebSocket
+ZTWebSocket is a websocket library built on top of AsyncSocket which provides an easy to use interface for working with websocket connections
+* https://github.com/esad/zimt
+
+= JSONKit
+JSONKit is an awesome JSON parser written in Objective-C which is both simple and extremely fast.
+* https://github.com/johnezang/JSONKit
 
 
 == License
