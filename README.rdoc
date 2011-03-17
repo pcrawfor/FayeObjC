@@ -1,43 +1,19 @@
 = FayeObjC
 
-A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implementing on top of the zimt Objective-C web socket library and will work on both Mac and iPhone projects.
+A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implementing on top of the zimt Objective-C web socket library and will work on both Mac and iPhone projects. JSON parsing is handled using the excellent JSONKit (https://github.com/johnezang/JSONKit) library which is included in the FayeObjC source folder.
 
 = Building the library
 
 Using it in a Mac project:
 
-Using FayeObjC is as simple as adding the FayeObjC source folder to your Xcode project directory and then adding it to the project.  FayeObjc has a couple of dependencies the one is the YAJL JSON parser, it also requires the import of the CoreServices.framework on Mac OS X which is used by AsyncSocket (part of the zimt websocket library).
+Using FayeObjC is as simple as adding the FayeObjC source folder to your Xcode project directory and then adding it to the project.  FayeObjc has only one dependency the CoreServices.framework on Mac OS X which is used by AsyncSocket (part of the zimt websocket library).  
 
 Add the CoreServices.framework to your project by right clicking on Linked Frameworks in the Project and selecting Add->Existing Frameworks...
 
-Setting up YAJL for Mac:
-
-You can get the YAJL.framework from: https://github.com/gabriel/yajl-objc
-Getting YAJL to build:
-* Copy `YAJL.framework` to your project directory (maybe in MyProject/Frameworks/.)
-* Add the `YAJL.framekwork` files (from MyProject/Frameworks/) to your target. It should be visible as a `Linked Framework` in the target. 
-* Under Build Settings, add `@loader_path/../Frameworks` to `Runpath Search Paths` 
-* Add `New Build Phase` | `New Copy Files Build Phase`. 
-	* Change the Destination to `Frameworks`.
-	* Drag `YAJL.framework` into the the build phase
-	* Make sure the copy phase appears before any `Run Script` phases
 
 Using it in an iPhone project:
 
-Using FayeObjC is as simple as adding the FayeObjC source folder to your Xcode project directory and then adding it to the project.  FayeObjc has a couple of dependencies the one is the YAJL JSON parser, it also requires the import of the CFNetwork.framework on iOS which is used by AsyncSocket (part of the zimt websocket library).
-
-Setting up YAJL for iPhone:
-
-You can get the YAJL.framework from: https://github.com/gabriel/yajl-objc
-Getting YAJL to build:
-* Add `YAJLiOS.framework` to your project.
-* Add the frameworks to `Linked Libraries`:
-  * `YAJLiOS.framework`
-  * `CoreGraphics.framework`
-  * `Foundation.framework`
-  * `UIKit.framework`
-* Under `Framework Search Paths` make sure the (parent) directory to `YAJLiOS.framework` is listed.
-* Under `Other Linker Flags` in your target, add `-ObjC` and `-all_load`
+Using FayeObjC is as simple as adding the FayeObjC source folder to your Xcode project directory and then adding it to the project.  FayeObjc has only one dependency the CFNetwork.framework on iOS which is used by AsyncSocket (part of the zimt websocket library).
 
 Add the CFNetwork.framework to your project by right clicking on Linked Frameworks in the Project and selecting Add->Existing Frameworks...
 
