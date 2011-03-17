@@ -10,6 +10,7 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* fayeMacAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* fayeMacAppDelegate.m */; };
 		5D196E0D132FBF1900DF141C /* fayeMac.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5D196E0C132FBF1900DF141C /* fayeMac.icns */; };
+		5D4CF4EC133242AD00738FDE /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF4EB133242AD00738FDE /* JSONKit.m */; };
 		5DD10076132118ED00E49150 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD10075132118ED00E49150 /* CoreServices.framework */; };
 		5DD102ED13213B1F00E49150 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD102EC13213B1F00E49150 /* MainController.m */; };
 		5DD10431132183C600E49150 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1042F132183C600E49150 /* green.png */; };
@@ -30,8 +31,6 @@
 		5DD104C81321886400E49150 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104B41321886400E49150 /* AsyncUdpSocket.m */; };
 		5DD104C91321886400E49150 /* changes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5DD104B51321886400E49150 /* changes.txt */; };
 		5DD104CA1321886400E49150 /* ZTWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104BA1321886400E49150 /* ZTWebSocket.m */; };
-		5DD1FF7E1320493400E49150 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD1FF7D1320493400E49150 /* YAJL.framework */; };
-		5DD1FF851320495200E49150 /* YAJL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5DD1FF7D1320493400E49150 /* YAJL.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -44,7 +43,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5DD1FF851320495200E49150 /* YAJL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +60,8 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		5D196E0C132FBF1900DF141C /* fayeMac.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = fayeMac.icns; sourceTree = "<group>"; };
+		5D4CF4EA133242AD00738FDE /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		5D4CF4EB133242AD00738FDE /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		5DD10075132118ED00E49150 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		5DD102EB13213B1F00E49150 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		5DD102EC13213B1F00E49150 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
@@ -99,7 +99,6 @@
 		5DD104B81321886400E49150 /* ZTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZTLog.h; path = FayeObjC/zimt/Zimt/ZTLog.h; sourceTree = SOURCE_ROOT; };
 		5DD104B91321886400E49150 /* ZTWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZTWebSocket.h; path = FayeObjC/zimt/Zimt/ZTWebSocket.h; sourceTree = SOURCE_ROOT; };
 		5DD104BA1321886400E49150 /* ZTWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZTWebSocket.m; path = FayeObjC/zimt/Zimt/ZTWebSocket.m; sourceTree = SOURCE_ROOT; };
-		5DD1FF7D1320493400E49150 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = Frameworks/YAJL.framework; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* fayeMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "fayeMac-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* fayeMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fayeMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,7 +109,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				5DD1FF7E1320493400E49150 /* YAJL.framework in Frameworks */,
 				5DD10076132118ED00E49150 /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,9 +193,17 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
-				5DD1FF7D1320493400E49150 /* YAJL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D4CF4E9133242AD00738FDE /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF4EA133242AD00738FDE /* JSONKit.h */,
+				5D4CF4EB133242AD00738FDE /* JSONKit.m */,
+			);
+			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		5DD1042E132183C600E49150 /* images */ = {
@@ -212,6 +218,7 @@
 		5DD104941321886400E49150 /* FayeObjC */ = {
 			isa = PBXGroup;
 			children = (
+				5D4CF4E9133242AD00738FDE /* JSONKit */,
 				5DD104951321886400E49150 /* Extensions */,
 				5DD104A91321886400E49150 /* FayeClient.h */,
 				5DD104AA1321886400E49150 /* FayeClient.m */,
@@ -387,6 +394,7 @@
 				5DD104C71321886400E49150 /* AsyncSocket.m in Sources */,
 				5DD104C81321886400E49150 /* AsyncUdpSocket.m in Sources */,
 				5DD104CA1321886400E49150 /* ZTWebSocket.m in Sources */,
+				5D4CF4EC133242AD00738FDE /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,21 +450,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = fayeMac_Prefix.pch;
 				INFOPLIST_FILE = "fayeMac-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Classes/libYAJLIPhone_40Compatible\"",
-					"\"$(SRCROOT)/zimt/src/build/Debug-iphonesimulator\"",
-					"\"$(SRCROOT)/../fayeiPhone/Classes/libYAJLIPhone_40Compatible\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = fayeMac;
 			};
 			name = Release;
