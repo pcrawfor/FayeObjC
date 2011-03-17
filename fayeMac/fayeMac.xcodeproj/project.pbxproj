@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* fayeMacAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* fayeMacAppDelegate.m */; };
+		5D196E0D132FBF1900DF141C /* fayeMac.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5D196E0C132FBF1900DF141C /* fayeMac.icns */; };
 		5DD10076132118ED00E49150 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD10075132118ED00E49150 /* CoreServices.framework */; };
 		5DD102ED13213B1F00E49150 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD102EC13213B1F00E49150 /* MainController.m */; };
 		5DD10431132183C600E49150 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1042F132183C600E49150 /* green.png */; };
@@ -60,6 +61,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		5D196E0C132FBF1900DF141C /* fayeMac.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = fayeMac.icns; sourceTree = "<group>"; };
 		5DD10075132118ED00E49150 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		5DD102EB13213B1F00E49150 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		5DD102EC13213B1F00E49150 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5D196E0C132FBF1900DF141C /* fayeMac.icns */,
 				5DD1042E132183C600E49150 /* images */,
 				8D1107310486CEB800E47090 /* fayeMac-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -356,6 +359,7 @@
 				5DD10432132183C600E49150 /* red.png in Resources */,
 				5DD104C61321886400E49150 /* AsyncSocket Documentation.html in Resources */,
 				5DD104C91321886400E49150 /* changes.txt in Resources */,
+				5D196E0D132FBF1900DF141C /* fayeMac.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

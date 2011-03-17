@@ -1,10 +1,24 @@
-//
-//  MainController.m
-//  fayeMac
-//
-//  Created by Paul Crawford on 3/4/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/* The MIT License
+ 
+ Copyright (c) 2011 Paul Crawford
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE. */
 
 #import "MainController.h"
 #import "fayeMacAppDelegate.h"
@@ -25,6 +39,7 @@
 @synthesize serverChannelString;
 @synthesize connected;
 @synthesize connectIndicator;
+@synthesize statusLabel;
 
 - (void) awakeFromNib {
   DLog(@"MainController firing up");  
@@ -41,6 +56,7 @@
   
   [self.messageField setTarget:self];
   [self.messageField setAction:@selector(sendMessage:)];
+  self.statusLabel.stringValue = @"";  
 }
 
 #pragma mark -
@@ -48,22 +64,39 @@
 - (void) messageReceived:(NSDictionary *)messageDict {
   DLog(@"message recieved");
   if([messageDict objectForKey:@"message"]) {    
-    [self.messagesText insertText:[NSString stringWithFormat:@"%@\n", [messageDict objectForKey:@"message"]]];
+    [self addLogMessage:[messageDict objectForKey:@"message"]];
   }
 }
 
 - (void)connectedToServer {
+  [self addLogMessage:@"**** Connected to server ****"];
   self.connected = YES;
   [self.connectIndicator setImage:[NSImage imageNamed:@"green.png"]];
   [self.connectBtn setTitle:@"Disconnect"];
   [connectBtn setAction:@selector(disconnectFromServer:)];
+  [self disableFields];
+  self.statusLabel.stringValue = [NSString stringWithFormat:@"Subscribed to channel: %@", self.channelField.stringValue];
 }
 
 - (void)disconnectedFromServer {
+  if(self.connected)
+    [self addLogMessage:@"**** Disconnected from server ****"];
+  [self enableFields];
   self.connected = NO;
   [self.connectIndicator setImage:[NSImage imageNamed:@"red.png"]];
   [self.connectBtn setTitle:@"Connect"];
   [connectBtn setAction:@selector(connectToServer:)];
+  self.statusLabel.stringValue = @"Disconnected";
+}
+
+- (void) disableFields {
+  [self.serverField setEnabled:NO];
+  [self.channelField setEnabled:NO];
+}
+
+- (void) enableFields {
+  [self.serverField setEnabled:YES];
+  [self.channelField setEnabled:YES];
 }
 
 #pragma mark -
@@ -123,6 +156,15 @@
   NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys:[self.messageField stringValue], @"message", nil];
   [self.messageField setStringValue:@""];
   [self.faye publishDict:messageDict];
+}
+
+- (IBAction) clearLog:(id)sender {
+  DLog(@"Clear Log");
+  [self.messagesText setString:@""]; 
+}
+
+- (void) addLogMessage:(NSString *)message {
+  [self.messagesText insertText:[NSString stringWithFormat:@"%@\n", message]];
 }
 
 - (void) dealloc
