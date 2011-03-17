@@ -81,7 +81,7 @@
 - (void) disconnectFromServer {  
   [self disconnect];  
 }
-   
+
 - (void) publishDict:(NSDictionary *)messageDict {
   [self publish:messageDict];
 }
@@ -166,7 +166,7 @@
 - (void) handshake {
   NSArray *connTypes = [NSArray arrayWithObjects:@"long-polling", @"callback-polling", @"iframe", @"websocket", nil];   
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:HANDSHAKE_CHANNEL, @"channel", @"1.0", @"version", @"1.0beta", @"minimumVersion", connTypes, @"supportedConnectionTypes", nil];
-  NSString *json = [dict yajl_JSONString];
+  NSString *json = [dict JSONString];
   [webSocket send:json];  
 }
 
@@ -178,7 +178,7 @@
  */
 - (void) connect {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:CONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", @"websocket", @"connectionType", nil];
-  NSString *json = [dict yajl_JSONString];  
+  NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
 
@@ -190,7 +190,7 @@
  */
 - (void) disconnect {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:DISCONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", nil];
-  NSString *json = [dict yajl_JSONString];  
+  NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
 
@@ -203,7 +203,7 @@
  */
 - (void) subscribe {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
-  NSString *json = [dict yajl_JSONString];    
+  NSString *json = [dict JSONString];    
   [webSocket send:json];
 }
 
@@ -216,7 +216,7 @@
  */
 - (void) unsubscribe {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:UNSUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
-  NSString *json = [dict yajl_JSONString];  
+  NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
 
@@ -232,7 +232,7 @@
   NSString *channel = self.activeSubChannel;
   NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", [[NSDate date] timeIntervalSince1970], 1];
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:channel, @"channel", self.fayeClientId, @"clientId", messageDict, @"data", messageId, @"id", nil];
-  NSString *json = [dict yajl_JSONString];  
+  NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
 
@@ -240,7 +240,7 @@
 #pragma mark Faye message handling
 - (void) parseFayeMessage:(NSString *)message {
   // interpret the message(s) 
-  NSArray *messageArray = [message yajl_JSON];    
+  NSArray *messageArray = [message objectFromJSONString];    
   for(NSDictionary *messageDict in messageArray) {
     FayeMessage *fm = [[FayeMessage alloc] initWithDict:messageDict];    
     
