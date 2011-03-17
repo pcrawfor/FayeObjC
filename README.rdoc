@@ -10,6 +10,8 @@ The messages are of the form { message: "some text" }
 
 If you want to use the mac client to connect and test your faye server just unzip and start it on any mac.
 
+The Mac client is available in the Downloads section of the repo - click "Downloads" to access it.
+
 = Building the library
 
 Using it in a Mac project:
