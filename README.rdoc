@@ -2,6 +2,14 @@
 
 A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implementing on top of the zimt Objective-C web socket library and will work on both Mac and iPhone projects. JSON parsing is handled using the excellent JSONKit (https://github.com/johnezang/JSONKit) library which is included in the FayeObjC source folder.
 
+= Mac Test Client
+
+Included in the repository is a zipped release build of the FayeObjC Mac client.  This client allows you to test your Faye server, it connects over a websocket connection to the server specified and subscribes to the channel specified and will send messages via the server/channel it is connected to.
+
+The messages are of the form { message: "some text" }
+
+If you want to use the mac client to connect and test your faye server just unzip and start it on any mac.
+
 = Building the library
 
 Using it in a Mac project:
