@@ -25,13 +25,12 @@
 //  FayeObjC
 //
 #ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
-  #import <Cocoa/Cocoa.h>
-  #import <YAJL/YAJL.h>
+#import <Cocoa/Cocoa.h>
 #else
-  #import <UIKit/UIKit.h>
-  #import "NSObject+YAJL.h"
+#import <UIKit/UIKit.h>
 #endif
 
+#import "JSONKit.h"
 #import "ZTWebSocket.h"
 enum _fayeStates {
   kWebSocketDisconnected,

@@ -44,7 +44,7 @@
   [nc addObserver:self selector:@selector(keyboardWillHide:) name: UIKeyboardWillHideNotification object:nil];    
   
   self.connected = NO;
-  self.faye = [[FayeClient alloc] initWithURLString:@"ws://mealsnapapp.com:5222/faye" channel:@"/testing"];
+  self.faye = [[FayeClient alloc] initWithURLString:@"ws://YOUR_SERVER_HERE:PORT/faye" channel:@"/testing"];
   self.faye.delegate = self;
   [faye connectToServer];
 }

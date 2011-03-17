@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* fayeiPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* fayeiPhoneViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* fayeiPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* fayeiPhoneViewController.m */; };
+		5D4CF5121332438700738FDE /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF5111332438700738FDE /* JSONKit.m */; };
 		69658B581321C71300151F3D /* NSDate-UTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69658B341321C71300151F3D /* NSDate-UTC.m */; };
 		69658B591321C71300151F3D /* NSObject+PropertySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 69658B361321C71300151F3D /* NSObject+PropertySupport.m */; };
 		69658B5A1321C71300151F3D /* NSString+InflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 69658B381321C71300151F3D /* NSString+InflectionSupport.m */; };
@@ -31,7 +32,6 @@
 		69658B651321C71300151F3D /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 69658B511321C71300151F3D /* AsyncUdpSocket.m */; };
 		69658B661321C71300151F3D /* changes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69658B521321C71300151F3D /* changes.txt */; };
 		69658B671321C71300151F3D /* ZTWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 69658B571321C71300151F3D /* ZTWebSocket.m */; };
-		69658BA61321CA5B00151F3D /* libYAJLIPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69658B9D1321CA5B00151F3D /* libYAJLIPhone.a */; };
 		69658BAE1321CAB700151F3D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69658BAD1321CAB700151F3D /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +48,8 @@
 		28D7ACF70DDB3853001CB0EB /* fayeiPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fayeiPhoneViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* fayeiPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fayeiPhone_Prefix.pch; sourceTree = "<group>"; };
+		5D4CF5101332438700738FDE /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		5D4CF5111332438700738FDE /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		69658B331321C71300151F3D /* NSDate-UTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-UTC.h"; sourceTree = "<group>"; };
 		69658B341321C71300151F3D /* NSDate-UTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-UTC.m"; sourceTree = "<group>"; };
 		69658B351321C71300151F3D /* NSObject+PropertySupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertySupport.h"; sourceTree = "<group>"; };
@@ -80,15 +82,6 @@
 		69658B551321C71300151F3D /* ZTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZTLog.h; sourceTree = "<group>"; };
 		69658B561321C71300151F3D /* ZTWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZTWebSocket.h; sourceTree = "<group>"; };
 		69658B571321C71300151F3D /* ZTWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZTWebSocket.m; sourceTree = "<group>"; };
-		69658B9D1321CA5B00151F3D /* libYAJLIPhone.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYAJLIPhone.a; sourceTree = "<group>"; };
-		69658B9E1321CA5B00151F3D /* NSObject+YAJL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YAJL.h"; sourceTree = "<group>"; };
-		69658B9F1321CA5B00151F3D /* YAJL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJL.h; sourceTree = "<group>"; };
-		69658BA01321CA5B00151F3D /* yajl_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_common.h; sourceTree = "<group>"; };
-		69658BA11321CA5B00151F3D /* yajl_gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_gen.h; sourceTree = "<group>"; };
-		69658BA21321CA5B00151F3D /* yajl_parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_parse.h; sourceTree = "<group>"; };
-		69658BA31321CA5B00151F3D /* YAJLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLDocument.h; sourceTree = "<group>"; };
-		69658BA41321CA5B00151F3D /* YAJLGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLGen.h; sourceTree = "<group>"; };
-		69658BA51321CA5B00151F3D /* YAJLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLParser.h; sourceTree = "<group>"; };
 		69658BAD1321CAB700151F3D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* fayeiPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "fayeiPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,7 +94,6 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				69658BA61321CA5B00151F3D /* libYAJLIPhone.a in Frameworks */,
 				69658BAE1321CAB700151F3D /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +104,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				69658B9C1321CA5B00151F3D /* libYAJLIPhone_40Compatible */,
 				69658B311321C71300151F3D /* FayeObjc */,
 				1D3623240D0F684500981E51 /* fayeiPhoneAppDelegate.h */,
 				1D3623250D0F684500981E51 /* fayeiPhoneAppDelegate.m */,
@@ -172,9 +163,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5D4CF50F1332438700738FDE /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF5101332438700738FDE /* JSONKit.h */,
+				5D4CF5111332438700738FDE /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		69658B311321C71300151F3D /* FayeObjc */ = {
 			isa = PBXGroup;
 			children = (
+				5D4CF50F1332438700738FDE /* JSONKit */,
 				69658B321321C71300151F3D /* Extensions */,
 				69658B461321C71300151F3D /* FayeClient.h */,
 				69658B471321C71300151F3D /* FayeClient.m */,
@@ -259,22 +260,6 @@
 			path = Zimt;
 			sourceTree = "<group>";
 		};
-		69658B9C1321CA5B00151F3D /* libYAJLIPhone_40Compatible */ = {
-			isa = PBXGroup;
-			children = (
-				69658B9D1321CA5B00151F3D /* libYAJLIPhone.a */,
-				69658B9E1321CA5B00151F3D /* NSObject+YAJL.h */,
-				69658B9F1321CA5B00151F3D /* YAJL.h */,
-				69658BA01321CA5B00151F3D /* yajl_common.h */,
-				69658BA11321CA5B00151F3D /* yajl_gen.h */,
-				69658BA21321CA5B00151F3D /* yajl_parse.h */,
-				69658BA31321CA5B00151F3D /* YAJLDocument.h */,
-				69658BA41321CA5B00151F3D /* YAJLGen.h */,
-				69658BA51321CA5B00151F3D /* YAJLParser.h */,
-			);
-			path = libYAJLIPhone_40Compatible;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -355,6 +340,7 @@
 				69658B641321C71300151F3D /* AsyncSocket.m in Sources */,
 				69658B651321C71300151F3D /* AsyncUdpSocket.m in Sources */,
 				69658B671321C71300151F3D /* ZTWebSocket.m in Sources */,
+				5D4CF5121332438700738FDE /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +391,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DDEBUG=1";
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
