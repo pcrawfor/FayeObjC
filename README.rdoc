@@ -53,6 +53,12 @@ Implement the FayeClientDelegate:
     // Faye disconnected
   }
 
+Send a message to the Server:
+  // The message dictionary can be any dictionary structure that you want to send via the connected channel 
+  NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys: @"Some message text", @"message", @"some meta information", @"meta", nil];
+  [faye sendMessage:messageDict];
+
+
 Example Project:
 
 Included in the repository is a sample XCode project for Mac that provides a simple client application for interacting with Faye servers.  Try it out and have a look at the code for an illustration on the usage of the library.
