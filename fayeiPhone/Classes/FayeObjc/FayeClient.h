@@ -76,6 +76,6 @@ enum _fayeStates {
 - (id) initWithURLString:(NSString *)aFayeURLString channel:(NSString *)channel;
 - (void) connectToServer;
 - (void) disconnectFromServer;
-- (void) publishDict:(NSDictionary *)messageDict;
+- (void) sendMessage:(NSDictionary *)messageDict;
 
 @end

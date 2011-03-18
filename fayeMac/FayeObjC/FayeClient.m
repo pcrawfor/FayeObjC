@@ -82,7 +82,7 @@
   [self disconnect];  
 }
 
-- (void) publishDict:(NSDictionary *)messageDict {
+- (void) sendMessage:(NSDictionary *)messageDict {
   [self publish:messageDict];
 }
 

@@ -155,7 +155,7 @@
   DLog(@"message %@", [self.messageField stringValue]);
   NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys:[self.messageField stringValue], @"message", nil];
   [self.messageField setStringValue:@""];
-  [self.faye publishDict:messageDict];
+  [self.faye sendMessage:messageDict];
 }
 
 - (IBAction) clearLog:(id)sender {

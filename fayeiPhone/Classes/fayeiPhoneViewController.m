@@ -91,7 +91,7 @@
   DLog(@"send message %@", messageTextField.text);    
   NSString *message = [NSString stringWithString:messageTextField.text];
   NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys:message, @"message", nil];  
-  [self.faye publishDict:messageDict];
+  [self.faye sendMessage:messageDict];
   self.messageTextField.text = @"";
 }
 
