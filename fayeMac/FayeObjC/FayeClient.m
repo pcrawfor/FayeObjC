@@ -38,6 +38,7 @@
 - (void) subscribe;
 - (void) publish:(NSDictionary *)messageDict;
 - (void) parseFayeMessage:(NSString *)message;
+BOOL fayeConnected;
 
 @end
 
@@ -48,7 +49,6 @@
 @synthesize webSocket;
 @synthesize fayeClientId;
 @synthesize webSocketConnected;
-@synthesize fayeConnected;
 @synthesize activeSubChannel;
 @synthesize delegate;
 
@@ -62,7 +62,7 @@
   if (self != nil) {
     self.fayeURLString = aFayeURLString;
     self.webSocketConnected = NO;
-    self.fayeConnected = NO;
+    fayeConnected = NO;
     self.activeSubChannel = channel;  
   }
   return self;
@@ -93,7 +93,7 @@
 #pragma mark webSocket
 -(void)webSocketDidClose:(ZTWebSocket *)webSocket {    
   self.webSocketConnected = NO;  
-  self.fayeConnected = NO;  
+  fayeConnected = NO;  
   if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(disconnectedFromServer)]) {
     [self.delegate disconnectedFromServer];
   }  
@@ -145,7 +145,10 @@
 #pragma mark -
 #pragma mark WebSocket connection
 - (void) openWebSocketConnection {
-  self.webSocket = [[ZTWebSocket alloc] initWithURLString:self.fayeURLString delegate:self];
+  // clean up any existing socket
+  [webSocket setDelegate:nil];
+  [webSocket close];
+  webSocket = [[ZTWebSocket alloc] initWithURLString:self.fayeURLString delegate:self];
   [webSocket open];	    
 }
 
@@ -258,14 +261,14 @@
       }    
     } else if ([fm.channel isEqualToString:CONNECT_CHANNEL]) {      
       if ([fm.successful boolValue]) {        
-        self.fayeConnected = YES;
+        fayeConnected = YES;
         [self connect];
       } else {
         NSLog(@"ERROR CONNECTING TO FAYE");
       }
     } else if ([fm.channel isEqualToString:DISCONNECT_CHANNEL]) {
       if ([fm.successful boolValue]) {        
-        self.fayeConnected = NO;  
+        fayeConnected = NO;  
         [self closeWebSocketConnection];
         if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(disconnectedFromServer)]) {
           [self.delegate disconnectedFromServer];
@@ -290,7 +293,8 @@
     } else {
       NSLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
     }
-  }    
+    [fm release];
+  }  
 }
 
 @end
