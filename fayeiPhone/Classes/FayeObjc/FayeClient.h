@@ -59,8 +59,7 @@ enum _fayeStates {
   NSString *fayeURLString;
   ZTWebSocket* webSocket;
   NSString *fayeClientId;
-  BOOL webSocketConnected;
-  BOOL fayeConnected;  
+  BOOL webSocketConnected;  
   NSString *activeSubChannel;
   id <FayeClientDelegate> delegate;
 }
@@ -69,7 +68,6 @@ enum _fayeStates {
 @property (retain) ZTWebSocket* webSocket;
 @property (retain) NSString *fayeClientId;
 @property (assign) BOOL webSocketConnected;
-@property (assign) BOOL fayeConnected;
 @property (retain) NSString *activeSubChannel;
 @property (assign) id <FayeClientDelegate> delegate;
 
