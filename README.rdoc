@@ -59,6 +59,24 @@ Send a message to the Server:
   [faye sendMessage:messageDict];
 
 
+Using Bayeux Extensions:
+  // Faye supports extensions to accomplish things like authentication  
+  // import the client
+  #import "FayeClient.h"
+
+  // init the FayeClient with a server and channel to subscribe to
+  FayeClient *faye = [[FayeClient alloc] initWithURLString:@"ws://localhost:8000/faye" channel:@"/chat"];
+  faye.delegate = self; // ensure that you implement the FayeClientDelegate functions
+  // setup the extension and connect to the server
+  NSDictionary *ext = [NSDictionary dictionaryWithObjectsAndKeys:@"testing", @"authToken", nil];
+  [faye connectToServerWithExt:ext];
+        
+  // sending an extension with a standard message
+  NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys: @"Some message text", @"message", @"some meta information", @"meta", nil];
+  NSDictionary *ext = [NSDictionary dictionaryWithObjectsAndKeys:@"testing", @"authToken", nil];
+  [faye sendMessage:messageDict withExt:ext];
+
+
 Example Project:
 
 Included in the repository is a sample XCode project for Mac that provides a simple client application for interacting with Faye servers.  Try it out and have a look at the code for an illustration on the usage of the library.

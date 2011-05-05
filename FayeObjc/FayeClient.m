@@ -28,6 +28,13 @@
 #import "FayeClient.h"
 #import "FayeMessage.h"
 
+// allows definition of private property
+@interface FayeClient ()
+
+@property (retain) NSDictionary *connectionExtension;
+
+@end
+
 @interface FayeClient (Private)
 
 - (void) openWebSocketConnection;
@@ -36,9 +43,8 @@
 - (void) disconnect;
 - (void) handshake;
 - (void) subscribe;
-- (void) publish:(NSDictionary *)messageDict;
+- (void) publish:(NSDictionary *)messageDict withExt:(NSDictionary *)extension;
 - (void) parseFayeMessage:(NSString *)message;
-BOOL fayeConnected;
 
 @end
 
@@ -51,6 +57,7 @@ BOOL fayeConnected;
 @synthesize webSocketConnected;
 @synthesize activeSubChannel;
 @synthesize delegate;
+@synthesize connectionExtension;
 
 /*
  Example websocket url string
@@ -78,12 +85,21 @@ BOOL fayeConnected;
   [self openWebSocketConnection];
 }
 
+- (void) connectToServerWithExt:(NSDictionary *)extension {
+  self.connectionExtension = extension;  
+  [self connectToServer];
+}
+
 - (void) disconnectFromServer {  
   [self disconnect];  
 }
 
 - (void) sendMessage:(NSDictionary *)messageDict {
-  [self publish:messageDict];
+  [self publish:messageDict withExt:nil];
+}
+
+- (void) sendMessage:(NSDictionary *)messageDict withExt:(NSDictionary *)extension {
+  [self publish:messageDict withExt:extension];
 }
 
 #pragma mark -
@@ -133,6 +149,7 @@ BOOL fayeConnected;
   [fayeURLString release];
   [fayeClientId release];
   [activeSubChannel release];  
+  [connectionExtension release];
   [super dealloc];
 }
 
@@ -205,7 +222,13 @@ BOOL fayeConnected;
  }
  */
 - (void) subscribe {
-  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
+  NSDictionary *dict = nil;
+  if(nil == self.connectionExtension) {
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", nil];
+  } else {
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", self.activeSubChannel, @"subscription", self.connectionExtension, @"ext", nil];
+  }
+  
   NSString *json = [dict JSONString];    
   [webSocket send:json];
 }
@@ -231,10 +254,17 @@ BOOL fayeConnected;
  "id": "some unique message id"
  }
  */
-- (void) publish:(NSDictionary *)messageDict {
+- (void) publish:(NSDictionary *)messageDict withExt:(NSDictionary *)extension {
   NSString *channel = self.activeSubChannel;
   NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", [[NSDate date] timeIntervalSince1970], 1];
-  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:channel, @"channel", self.fayeClientId, @"clientId", messageDict, @"data", messageId, @"id", nil];
+  NSDictionary *dict = nil;
+  
+  if(nil == extension) {
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:channel, @"channel", self.fayeClientId, @"clientId", messageDict, @"data", messageId, @"id", nil];
+  } else {
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:channel, @"channel", self.fayeClientId, @"clientId", messageDict, @"data", messageId, @"id", extension, @"ext",nil];
+  }
+  
   NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
@@ -276,20 +306,23 @@ BOOL fayeConnected;
       } else {
         NSLog(@"ERROR DISCONNECTING TO FAYE");
       }
-    } else if ([fm.channel isEqualToString:SUBSCRIBE_CHANNEL]) {
+    } else if ([fm.channel isEqualToString:SUBSCRIBE_CHANNEL]) {      
       if ([fm.successful boolValue]) {
         NSLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);        
       } else {
         NSLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
-      }
+        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(subscriptionFailedWithError:)]) {          
+          [self.delegate subscriptionFailedWithError:fm.error];
+        }        
+      }      
     } else if ([fm.channel isEqualToString:UNSUBSCRIBE_CHANNEL]) {
       NSLog(@"UNSUBSCRIBED FROM CHANNEL %@ ON FAYE", fm.subscription);
     } else if ([fm.channel isEqualToString:self.activeSubChannel]) {            
       if(fm.data) {        
-        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(messageReceived:)]) {
+        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(messageReceived:)]) {          
           [self.delegate messageReceived:fm.data];
         }
-      }      
+      }           
     } else {
       NSLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
     }

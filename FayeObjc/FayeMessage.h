@@ -47,6 +47,7 @@
   NSString *subscription;
   NSDate *timestamp;
   NSDictionary *data;
+  NSDictionary *ext;
   NSString *fayeId; // converted from "id" in bayeux protocol
 }
 
@@ -62,6 +63,7 @@
 @property (retain) NSString *subscription;
 @property (retain) NSDate *timestamp;
 @property (retain) NSDictionary *data;
+@property (retain) NSDictionary *ext;
 @property (retain) NSString *fayeId;
 
 - (id) initWithDict:(NSDictionary *)dict;

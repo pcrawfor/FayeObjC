@@ -22,7 +22,7 @@
 
 //
 //  FayeMessage.m
-//  fayeMac
+//  FayeObjC
 //
 
 #import "FayeMessage.h"
@@ -43,6 +43,7 @@
 @synthesize subscription;
 @synthesize timestamp;
 @synthesize data;
+@synthesize ext;
 @synthesize fayeId;
 
 - (id) initWithDict:(NSDictionary *)dict
@@ -54,7 +55,7 @@
       if([dict objectForKey:propName]) {        
         Class propertyClass = [[self class] propertyClass:[objectPropertyNames objectForKey:propName]];
         id value = [propertyClass deserialize:[dict objectForKey:propName]];
-        if(![value isEqual:[NSNull null]]) {
+        if(![value isEqual:[NSNull null]]) {          
           [self setValue:value forKey:propName];     
         }
       }
@@ -88,6 +89,7 @@
   [subscription release];
   [timestamp release];
   [data release];
+  [ext release];
   [fayeId release];
   [super dealloc];
 }

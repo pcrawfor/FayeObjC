@@ -51,6 +51,7 @@ enum _fayeStates {
 - (void)messageReceived:(NSDictionary *)messageDict;
 - (void)connectedToServer;
 - (void)disconnectedFromServer;
+- (void)subscriptionFailedWithError:(NSString *)error;
 
 @end
 
@@ -61,7 +62,10 @@ enum _fayeStates {
   NSString *fayeClientId;
   BOOL webSocketConnected;  
   NSString *activeSubChannel;
-  id <FayeClientDelegate> delegate;
+  id <FayeClientDelegate> delegate;  
+  @private
+  BOOL fayeConnected;  
+  NSDictionary *connectionExtension;
 }
 
 @property (retain) NSString *fayeURLString;
@@ -73,7 +77,9 @@ enum _fayeStates {
 
 - (id) initWithURLString:(NSString *)aFayeURLString channel:(NSString *)channel;
 - (void) connectToServer;
+- (void) connectToServerWithExt:(NSDictionary *)extension;
 - (void) disconnectFromServer;
 - (void) sendMessage:(NSDictionary *)messageDict;
+- (void) sendMessage:(NSDictionary *)messageDict withExt:(NSDictionary *)extension;
 
 @end
