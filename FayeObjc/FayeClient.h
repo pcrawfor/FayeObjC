@@ -49,9 +49,11 @@ enum _fayeStates {
 @protocol FayeClientDelegate <NSObject>
 
 - (void)messageReceived:(NSDictionary *)messageDict;
+- (void)socketDidSendMessage:(ZTWebSocket *)aWebSocket;
 - (void)connectedToServer;
 - (void)disconnectedFromServer;
 - (void)subscriptionFailedWithError:(NSString *)error;
+- (void)subscribedToChannel:(NSString *)channel;
 
 @end
 
