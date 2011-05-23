@@ -51,7 +51,10 @@ enum _fayeStates {
 - (void)messageReceived:(NSDictionary *)messageDict;
 - (void)connectedToServer;
 - (void)disconnectedFromServer;
+@optional
+- (void)socketDidSendMessage:(ZTWebSocket *)aWebSocket;
 - (void)subscriptionFailedWithError:(NSString *)error;
+- (void)subscribedToChannel:(NSString *)channel;
 
 @end
 

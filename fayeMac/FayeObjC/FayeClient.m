@@ -134,10 +134,13 @@
   [self handshake];    
 }
 
--(void)webSocketDidSendMessage:(ZTWebSocket *)webSocket {
+-(void)webSocketDidSendMessage:(ZTWebSocket *)aWebSocket {
 #ifdef DEBUG
   NSLog(@"WEBSOCKET DID SEND MESSAGE");
 #endif
+    if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(socketDidSendMessage:)]) {
+        [self.delegate socketDidSendMessage:aWebSocket];
+    }
 }
 
 #pragma mark -
@@ -309,6 +312,9 @@
     } else if ([fm.channel isEqualToString:SUBSCRIBE_CHANNEL]) {      
       if ([fm.successful boolValue]) {
         NSLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);        
+        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(subscribedToChannel:)]) {
+            [self.delegate subscribedToChannel:fm.subscription];
+        }
       } else {
         NSLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
         if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(subscriptionFailedWithError:)]) {          
