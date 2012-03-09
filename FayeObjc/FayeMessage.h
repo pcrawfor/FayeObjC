@@ -51,20 +51,20 @@
   NSString *fayeId; // converted from "id" in bayeux protocol
 }
 
-@property (retain) NSString *channel;
-@property (retain) NSString *clientId;
-@property (retain) NSNumber *successful;
-@property (retain) NSNumber *authSuccessful;
-@property (retain) NSString *version;
-@property (retain) NSString *minimumVersion;  
-@property (retain) NSArray *supportedConnectionTypes;
-@property (retain) NSDictionary *advice;
-@property (retain) NSString *error;
-@property (retain) NSString *subscription;
-@property (retain) NSDate *timestamp;
-@property (retain) NSDictionary *data;
-@property (retain) NSDictionary *ext;
-@property (retain) NSString *fayeId;
+@property (strong) NSString *channel;
+@property (strong) NSString *clientId;
+@property (strong) NSNumber *successful;
+@property (strong) NSNumber *authSuccessful;
+@property (strong) NSString *version;
+@property (strong) NSString *minimumVersion;  
+@property (strong) NSArray *supportedConnectionTypes;
+@property (strong) NSDictionary *advice;
+@property (strong) NSString *error;
+@property (strong) NSString *subscription;
+@property (strong) NSDate *timestamp;
+@property (strong) NSDictionary *data;
+@property (strong) NSDictionary *ext;
+@property (strong) NSString *fayeId;
 
 - (id) initWithDict:(NSDictionary *)dict;
 

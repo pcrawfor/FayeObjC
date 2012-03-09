@@ -102,42 +102,32 @@
   [self publish:messageDict withExt:extension];
 }
 
-#pragma mark -
-#pragma mark WebSocket Delegate
+#pragma -
+#pragma mark SRWebSocketDelegate
 
-#pragma mark -
-#pragma mark webSocket
--(void)webSocketDidClose:(ZTWebSocket *)webSocket {    
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket;
+{
+  self.webSocketConnected = YES;  
+  [self handshake];
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
+{  
+  // TODO: add more explicit error handling based on status codes.
+  NSLog(@"Error %@", [error localizedDescription]);
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(NSString *)message;
+{
+  [self parseFayeMessage:message];
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
   self.webSocketConnected = NO;  
   fayeConnected = NO;  
   if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(disconnectedFromServer)]) {
     [self.delegate disconnectedFromServer];
-  }  
-}
-
--(void)webSocket:(ZTWebSocket *)webSocket didFailWithError:(NSError *)error {  
-  if (error.code == ZTWebSocketErrorConnectionFailed) {
-    NSLog(@"Connection failed %@", [error localizedDescription]);
-  } else if (error.code == ZTWebSocketErrorHandshakeFailed) {
-    NSLog(@"Handshake failed %@", [error localizedDescription]);
-  } else {
-    NSLog(@"Error %@", [error localizedDescription]);
   }
-}
-
--(void)webSocket:(ZTWebSocket *)webSocket didReceiveMessage:(NSString*)message {
-  [self parseFayeMessage:message];
-}
-
--(void)webSocketDidOpen:(ZTWebSocket *)aWebSocket { 
-  self.webSocketConnected = YES;  
-  [self handshake];    
-}
-
--(void)webSocketDidSendMessage:(ZTWebSocket *)webSocket {
-#ifdef DEBUG
-  NSLog(@"WEBSOCKET DID SEND MESSAGE");
-#endif
 }
 
 #pragma mark -
@@ -145,12 +135,6 @@
 - (void) dealloc
 {
   self.delegate = nil;
-  [webSocket release];
-  [fayeURLString release];
-  [fayeClientId release];
-  [activeSubChannel release];  
-  [connectionExtension release];
-  [super dealloc];
 }
 
 @end
@@ -165,8 +149,9 @@
   // clean up any existing socket
   [webSocket setDelegate:nil];
   [webSocket close];
-  webSocket = [[ZTWebSocket alloc] initWithURLString:self.fayeURLString delegate:self];
-  [webSocket open];	    
+  webSocket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.fayeURLString]]];
+  webSocket.delegate = self;
+  [webSocket open];
 }
 
 - (void) closeWebSocketConnection { 
@@ -325,8 +310,7 @@
       }           
     } else {
       NSLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
-    }
-    [fm release];
+    }    
   }  
 }
 

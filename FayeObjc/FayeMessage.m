@@ -74,25 +74,4 @@
   return desc;
 }
 
-#pragma mark -
-- (void) dealloc
-{
-  [channel release];
-  [clientId release];
-  [successful release];
-  [authSuccessful release];
-  [version release];
-  [minimumVersion release];
-  [supportedConnectionTypes release];
-  [advice release];
-  [error release];
-  [subscription release];
-  [timestamp release];
-  [data release];
-  [ext release];
-  [fayeId release];
-  [super dealloc];
-}
-
-
 @end
