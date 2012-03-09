@@ -1,3 +1,9 @@
+= 2.0
+
+I've begun work on an update to FayeObjC, this update will reorganize the project source a bit but mainly will be switching out the websocket library from zimt to use SocketRocket (https://github.com/square/SocketRocket)
+
+I am also porting the source over to be ARC compatible, once this work is done I'll keep the current master around as a non-ARC branch for those that wish to use it.
+
 = FayeObjC
 
 A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implementing on top of the zimt Objective-C web socket library and will work on both Mac and iPhone projects. JSON parsing is handled using the excellent JSONKit (https://github.com/johnezang/JSONKit) library which is included in the FayeObjC source folder.
