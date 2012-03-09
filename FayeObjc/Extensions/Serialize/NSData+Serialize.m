@@ -28,7 +28,7 @@
 + (NSString *) deserialize:(id)value {
 	// For now the only NSData type we are parsing is strings which are too large to package as strings
   
-  NSString *string = [[[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding] autorelease];
+  NSString *string = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
   
   return string;
 }

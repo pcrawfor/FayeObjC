@@ -34,7 +34,7 @@ static ORSDateFormat _dateFormat;
 
 + (NSString *)formatDate:(NSDate *)date {
 	
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	/*if(_dateFormat == Date) {
 		[formatter setDateFormat:dateFormatString];
@@ -49,7 +49,7 @@ static ORSDateFormat _dateFormat;
 
 + (NSDate *)parseDateTime:(NSString *)dateTimeString {
 
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	NSString *format = ([dateTimeString hasSuffix:@"Z"]) ? dateTimeFormatString : dateTimeZoneFormatString;
 	[formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[formatter setDateFormat:format];
@@ -60,7 +60,7 @@ static ORSDateFormat _dateFormat;
 
 + (NSDate *)parseDate:(NSString *)dateString {
 	
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[formatter setDateFormat:dateFormatString];
 	//[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];

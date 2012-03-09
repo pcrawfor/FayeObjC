@@ -31,7 +31,7 @@
   NSInteger sourceSeconds = [[NSTimeZone localTimeZone] secondsFromGMTForDate:self];
   NSInteger destinationSeconds = [[NSTimeZone timeZoneWithName:@"UTC"] secondsFromGMTForDate:self];
   NSTimeInterval interval = destinationSeconds - sourceSeconds;
-  return [[[NSDate alloc] initWithTimeInterval:interval sinceDate:self] autorelease];
+  return [[NSDate alloc] initWithTimeInterval:interval sinceDate:self];
 }
 
 @end
