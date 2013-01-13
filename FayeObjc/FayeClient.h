@@ -49,9 +49,10 @@ enum _fayeStates {
 
 @protocol FayeClientDelegate <NSObject>
 
-- (void)messageReceived:(NSDictionary *)messageDict;
+- (void)messageReceived:(NSDictionary *)messageDict channel:(NSString *)channel;
 - (void)connectedToServer;
 - (void)disconnectedFromServer;
+- (void)connectionFailed;
 - (void)subscriptionFailedWithError:(NSString *)error;
 
 @end
@@ -67,12 +68,14 @@ enum _fayeStates {
   @private
   BOOL fayeConnected;  
   NSDictionary *connectionExtension;
+  BOOL connectionInitiated;
 }
 
 @property (retain) NSString *fayeURLString;
 @property (retain) SRWebSocket* webSocket;
 @property (retain) NSString *fayeClientId;
 @property (assign) BOOL webSocketConnected;
+@property (assign) BOOL connectionInitiated;
 @property (retain) NSString *activeSubChannel;
 @property (assign, unsafe_unretained) id <FayeClientDelegate> delegate;
 
@@ -80,7 +83,11 @@ enum _fayeStates {
 - (void) connectToServer;
 - (void) connectToServerWithExt:(NSDictionary *)extension;
 - (void) disconnectFromServer;
-- (void) sendMessage:(NSDictionary *)messageDict;
-- (void) sendMessage:(NSDictionary *)messageDict withExt:(NSDictionary *)extension;
+- (void) sendMessage:(NSDictionary *)messageDict onChannel:(NSString *)channel;
+- (void) sendMessage:(NSDictionary *)messageDict onChannel:(NSString *)channel withExt:(NSDictionary *)extension;
+- (void) subscribeToChannel:(NSString *)channel;
+- (void) unsubscribeFromChannel:(NSString *)channel;
+- (BOOL) isSubscribedToChannel:(NSString *)channel;
+- (void) resubscribeOpenSubs;
 
 @end
