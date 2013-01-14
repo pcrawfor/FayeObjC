@@ -27,7 +27,6 @@
 
 #import "FayeClient.h"
 #import "FayeMessage.h"
-#import "CCConstants.h"
 
 // allows definition of private property
 @interface FayeClient ()
