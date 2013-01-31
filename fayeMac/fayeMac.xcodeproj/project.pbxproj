@@ -10,27 +10,25 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* fayeMacAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* fayeMacAppDelegate.m */; };
 		5D196E0D132FBF1900DF141C /* fayeMac.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5D196E0C132FBF1900DF141C /* fayeMac.icns */; };
-		5D4CF4EC133242AD00738FDE /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF4EB133242AD00738FDE /* JSONKit.m */; };
 		5DD10076132118ED00E49150 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD10075132118ED00E49150 /* CoreServices.framework */; };
 		5DD102ED13213B1F00E49150 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD102EC13213B1F00E49150 /* MainController.m */; };
 		5DD10431132183C600E49150 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1042F132183C600E49150 /* green.png */; };
 		5DD10432132183C600E49150 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD10430132183C600E49150 /* red.png */; };
-		5DD104BB1321886400E49150 /* NSDate-UTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104971321886400E49150 /* NSDate-UTC.m */; };
-		5DD104BC1321886400E49150 /* NSObject+PropertySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104991321886400E49150 /* NSObject+PropertySupport.m */; };
-		5DD104BD1321886400E49150 /* NSString+InflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1049B1321886400E49150 /* NSString+InflectionSupport.m */; };
-		5DD104BE1321886400E49150 /* ObjectiveResourceDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1049D1321886400E49150 /* ObjectiveResourceDateFormatter.m */; };
-		5DD104BF1321886400E49150 /* NSData+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A01321886400E49150 /* NSData+Serialize.m */; };
-		5DD104C01321886400E49150 /* NSDate+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A21321886400E49150 /* NSDate+Serialize.m */; };
-		5DD104C11321886400E49150 /* NSDictionary+KeyTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A41321886400E49150 /* NSDictionary+KeyTranslation.m */; };
-		5DD104C21321886400E49150 /* NSObject+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A61321886400E49150 /* NSObject+Serialize.m */; };
-		5DD104C31321886400E49150 /* NSString+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104A81321886400E49150 /* NSString+Serialize.m */; };
-		5DD104C41321886400E49150 /* FayeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104AA1321886400E49150 /* FayeClient.m */; };
-		5DD104C51321886400E49150 /* FayeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104AC1321886400E49150 /* FayeMessage.m */; };
-		5DD104C61321886400E49150 /* AsyncSocket Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5DD104B01321886400E49150 /* AsyncSocket Documentation.html */; };
-		5DD104C71321886400E49150 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104B21321886400E49150 /* AsyncSocket.m */; };
-		5DD104C81321886400E49150 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104B41321886400E49150 /* AsyncUdpSocket.m */; };
-		5DD104C91321886400E49150 /* changes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5DD104B51321886400E49150 /* changes.txt */; };
-		5DD104CA1321886400E49150 /* ZTWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD104BA1321886400E49150 /* ZTWebSocket.m */; };
+		5DEB76EE16BAFF6A0053DCAD /* NSDate-UTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76CB16BAFF6A0053DCAD /* NSDate-UTC.m */; };
+		5DEB76EF16BAFF6A0053DCAD /* NSObject+PropertySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76CD16BAFF6A0053DCAD /* NSObject+PropertySupport.m */; };
+		5DEB76F016BAFF6A0053DCAD /* NSString+InflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76CF16BAFF6A0053DCAD /* NSString+InflectionSupport.m */; };
+		5DEB76F116BAFF6A0053DCAD /* ObjectiveResourceDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76D116BAFF6A0053DCAD /* ObjectiveResourceDateFormatter.m */; };
+		5DEB76F216BAFF6A0053DCAD /* NSData+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76D416BAFF6A0053DCAD /* NSData+Serialize.m */; };
+		5DEB76F316BAFF6A0053DCAD /* NSDate+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76D616BAFF6A0053DCAD /* NSDate+Serialize.m */; };
+		5DEB76F416BAFF6A0053DCAD /* NSDictionary+KeyTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76D816BAFF6A0053DCAD /* NSDictionary+KeyTranslation.m */; };
+		5DEB76F516BAFF6A0053DCAD /* NSObject+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76DA16BAFF6A0053DCAD /* NSObject+Serialize.m */; };
+		5DEB76F616BAFF6A0053DCAD /* NSString+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76DC16BAFF6A0053DCAD /* NSString+Serialize.m */; };
+		5DEB76F716BAFF6A0053DCAD /* FayeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76DE16BAFF6A0053DCAD /* FayeClient.m */; };
+		5DEB76F816BAFF6A0053DCAD /* FayeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76E016BAFF6A0053DCAD /* FayeMessage.m */; };
+		5DEB76F916BAFF6A0053DCAD /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76E316BAFF6A0053DCAD /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5DEB76FA16BAFF6A0053DCAD /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76E516BAFF6A0053DCAD /* base64.c */; };
+		5DEB76FB16BAFF6A0053DCAD /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76E816BAFF6A0053DCAD /* NSData+SRB64Additions.m */; };
+		5DEB76FC16BAFF6A0053DCAD /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76EB16BAFF6A0053DCAD /* SRWebSocket.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -60,45 +58,42 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		5D196E0C132FBF1900DF141C /* fayeMac.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = fayeMac.icns; sourceTree = "<group>"; };
-		5D4CF4EA133242AD00738FDE /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		5D4CF4EB133242AD00738FDE /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		5DD10075132118ED00E49150 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		5DD102EB13213B1F00E49150 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		5DD102EC13213B1F00E49150 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		5DD1042F132183C600E49150 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = images/green.png; sourceTree = SOURCE_ROOT; };
 		5DD10430132183C600E49150 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red.png; path = images/red.png; sourceTree = SOURCE_ROOT; };
-		5DD104961321886400E49150 /* NSDate-UTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate-UTC.h"; path = "FayeObjC/Extensions/NSDate-UTC.h"; sourceTree = SOURCE_ROOT; };
-		5DD104971321886400E49150 /* NSDate-UTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate-UTC.m"; path = "FayeObjC/Extensions/NSDate-UTC.m"; sourceTree = SOURCE_ROOT; };
-		5DD104981321886400E49150 /* NSObject+PropertySupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+PropertySupport.h"; path = "FayeObjC/Extensions/NSObject+PropertySupport.h"; sourceTree = SOURCE_ROOT; };
-		5DD104991321886400E49150 /* NSObject+PropertySupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+PropertySupport.m"; path = "FayeObjC/Extensions/NSObject+PropertySupport.m"; sourceTree = SOURCE_ROOT; };
-		5DD1049A1321886400E49150 /* NSString+InflectionSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+InflectionSupport.h"; path = "FayeObjC/Extensions/NSString+InflectionSupport.h"; sourceTree = SOURCE_ROOT; };
-		5DD1049B1321886400E49150 /* NSString+InflectionSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+InflectionSupport.m"; path = "FayeObjC/Extensions/NSString+InflectionSupport.m"; sourceTree = SOURCE_ROOT; };
-		5DD1049C1321886400E49150 /* ObjectiveResourceDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectiveResourceDateFormatter.h; path = FayeObjC/Extensions/ObjectiveResourceDateFormatter.h; sourceTree = SOURCE_ROOT; };
-		5DD1049D1321886400E49150 /* ObjectiveResourceDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectiveResourceDateFormatter.m; path = FayeObjC/Extensions/ObjectiveResourceDateFormatter.m; sourceTree = SOURCE_ROOT; };
-		5DD1049F1321886400E49150 /* NSData+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Serialize.h"; path = "FayeObjC/Extensions/Serialize/NSData+Serialize.h"; sourceTree = SOURCE_ROOT; };
-		5DD104A01321886400E49150 /* NSData+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Serialize.m"; path = "FayeObjC/Extensions/Serialize/NSData+Serialize.m"; sourceTree = SOURCE_ROOT; };
-		5DD104A11321886400E49150 /* NSDate+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Serialize.h"; path = "FayeObjC/Extensions/Serialize/NSDate+Serialize.h"; sourceTree = SOURCE_ROOT; };
-		5DD104A21321886400E49150 /* NSDate+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Serialize.m"; path = "FayeObjC/Extensions/Serialize/NSDate+Serialize.m"; sourceTree = SOURCE_ROOT; };
-		5DD104A31321886400E49150 /* NSDictionary+KeyTranslation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+KeyTranslation.h"; path = "FayeObjC/Extensions/Serialize/NSDictionary+KeyTranslation.h"; sourceTree = SOURCE_ROOT; };
-		5DD104A41321886400E49150 /* NSDictionary+KeyTranslation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+KeyTranslation.m"; path = "FayeObjC/Extensions/Serialize/NSDictionary+KeyTranslation.m"; sourceTree = SOURCE_ROOT; };
-		5DD104A51321886400E49150 /* NSObject+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Serialize.h"; path = "FayeObjC/Extensions/Serialize/NSObject+Serialize.h"; sourceTree = SOURCE_ROOT; };
-		5DD104A61321886400E49150 /* NSObject+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Serialize.m"; path = "FayeObjC/Extensions/Serialize/NSObject+Serialize.m"; sourceTree = SOURCE_ROOT; };
-		5DD104A71321886400E49150 /* NSString+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Serialize.h"; path = "FayeObjC/Extensions/Serialize/NSString+Serialize.h"; sourceTree = SOURCE_ROOT; };
-		5DD104A81321886400E49150 /* NSString+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Serialize.m"; path = "FayeObjC/Extensions/Serialize/NSString+Serialize.m"; sourceTree = SOURCE_ROOT; };
-		5DD104A91321886400E49150 /* FayeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FayeClient.h; sourceTree = "<group>"; };
-		5DD104AA1321886400E49150 /* FayeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FayeClient.m; sourceTree = "<group>"; };
-		5DD104AB1321886400E49150 /* FayeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FayeMessage.h; path = FayeObjC/FayeMessage.h; sourceTree = SOURCE_ROOT; };
-		5DD104AC1321886400E49150 /* FayeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FayeMessage.m; path = FayeObjC/FayeMessage.m; sourceTree = SOURCE_ROOT; };
-		5DD104B01321886400E49150 /* AsyncSocket Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "AsyncSocket Documentation.html"; path = "FayeObjC/zimt/Vendor/AsyncSocket/AsyncSocket Documentation.html"; sourceTree = SOURCE_ROOT; };
-		5DD104B11321886400E49150 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = FayeObjC/zimt/Vendor/AsyncSocket/AsyncSocket.h; sourceTree = SOURCE_ROOT; };
-		5DD104B21321886400E49150 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = FayeObjC/zimt/Vendor/AsyncSocket/AsyncSocket.m; sourceTree = SOURCE_ROOT; };
-		5DD104B31321886400E49150 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncUdpSocket.h; path = FayeObjC/zimt/Vendor/AsyncSocket/AsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
-		5DD104B41321886400E49150 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncUdpSocket.m; path = FayeObjC/zimt/Vendor/AsyncSocket/AsyncUdpSocket.m; sourceTree = SOURCE_ROOT; };
-		5DD104B51321886400E49150 /* changes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = changes.txt; path = FayeObjC/zimt/Vendor/AsyncSocket/changes.txt; sourceTree = SOURCE_ROOT; };
-		5DD104B71321886400E49150 /* Zimt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Zimt.h; path = FayeObjC/zimt/Zimt/Zimt.h; sourceTree = SOURCE_ROOT; };
-		5DD104B81321886400E49150 /* ZTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZTLog.h; path = FayeObjC/zimt/Zimt/ZTLog.h; sourceTree = SOURCE_ROOT; };
-		5DD104B91321886400E49150 /* ZTWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZTWebSocket.h; path = FayeObjC/zimt/Zimt/ZTWebSocket.h; sourceTree = SOURCE_ROOT; };
-		5DD104BA1321886400E49150 /* ZTWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZTWebSocket.m; path = FayeObjC/zimt/Zimt/ZTWebSocket.m; sourceTree = SOURCE_ROOT; };
+		5DEB76CA16BAFF6A0053DCAD /* NSDate-UTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-UTC.h"; sourceTree = "<group>"; };
+		5DEB76CB16BAFF6A0053DCAD /* NSDate-UTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-UTC.m"; sourceTree = "<group>"; };
+		5DEB76CC16BAFF6A0053DCAD /* NSObject+PropertySupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertySupport.h"; sourceTree = "<group>"; };
+		5DEB76CD16BAFF6A0053DCAD /* NSObject+PropertySupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertySupport.m"; sourceTree = "<group>"; };
+		5DEB76CE16BAFF6A0053DCAD /* NSString+InflectionSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+InflectionSupport.h"; sourceTree = "<group>"; };
+		5DEB76CF16BAFF6A0053DCAD /* NSString+InflectionSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+InflectionSupport.m"; sourceTree = "<group>"; };
+		5DEB76D016BAFF6A0053DCAD /* ObjectiveResourceDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveResourceDateFormatter.h; sourceTree = "<group>"; };
+		5DEB76D116BAFF6A0053DCAD /* ObjectiveResourceDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveResourceDateFormatter.m; sourceTree = "<group>"; };
+		5DEB76D316BAFF6A0053DCAD /* NSData+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Serialize.h"; sourceTree = "<group>"; };
+		5DEB76D416BAFF6A0053DCAD /* NSData+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Serialize.m"; sourceTree = "<group>"; };
+		5DEB76D516BAFF6A0053DCAD /* NSDate+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Serialize.h"; sourceTree = "<group>"; };
+		5DEB76D616BAFF6A0053DCAD /* NSDate+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Serialize.m"; sourceTree = "<group>"; };
+		5DEB76D716BAFF6A0053DCAD /* NSDictionary+KeyTranslation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KeyTranslation.h"; sourceTree = "<group>"; };
+		5DEB76D816BAFF6A0053DCAD /* NSDictionary+KeyTranslation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KeyTranslation.m"; sourceTree = "<group>"; };
+		5DEB76D916BAFF6A0053DCAD /* NSObject+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Serialize.h"; sourceTree = "<group>"; };
+		5DEB76DA16BAFF6A0053DCAD /* NSObject+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Serialize.m"; sourceTree = "<group>"; };
+		5DEB76DB16BAFF6A0053DCAD /* NSString+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Serialize.h"; sourceTree = "<group>"; };
+		5DEB76DC16BAFF6A0053DCAD /* NSString+Serialize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Serialize.m"; sourceTree = "<group>"; };
+		5DEB76DD16BAFF6A0053DCAD /* FayeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FayeClient.h; sourceTree = "<group>"; };
+		5DEB76DE16BAFF6A0053DCAD /* FayeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FayeClient.m; sourceTree = "<group>"; };
+		5DEB76DF16BAFF6A0053DCAD /* FayeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FayeMessage.h; sourceTree = "<group>"; };
+		5DEB76E016BAFF6A0053DCAD /* FayeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FayeMessage.m; sourceTree = "<group>"; };
+		5DEB76E216BAFF6A0053DCAD /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		5DEB76E316BAFF6A0053DCAD /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		5DEB76E516BAFF6A0053DCAD /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		5DEB76E616BAFF6A0053DCAD /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		5DEB76E716BAFF6A0053DCAD /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		5DEB76E816BAFF6A0053DCAD /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		5DEB76E916BAFF6A0053DCAD /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		5DEB76EA16BAFF6A0053DCAD /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		5DEB76EB16BAFF6A0053DCAD /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* fayeMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "fayeMac-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* fayeMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fayeMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,7 +114,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5DD104941321886400E49150 /* FayeObjC */,
+				5DEB76C816BAFF6A0053DCAD /* FayeObjc */,
 				256AC3D80F4B6AC300CF3369 /* fayeMacAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* fayeMacAppDelegate.m */,
 				5DD102EB13213B1F00E49150 /* MainController.h */,
@@ -197,15 +192,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5D4CF4E9133242AD00738FDE /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				5D4CF4EA133242AD00738FDE /* JSONKit.h */,
-				5D4CF4EB133242AD00738FDE /* JSONKit.m */,
-			);
-			path = JSONKit;
-			sourceTree = "<group>";
-		};
 		5DD1042E132183C600E49150 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,99 +201,92 @@
 			path = images;
 			sourceTree = SOURCE_ROOT;
 		};
-		5DD104941321886400E49150 /* FayeObjC */ = {
+		5DEB76C816BAFF6A0053DCAD /* FayeObjc */ = {
 			isa = PBXGroup;
 			children = (
-				5D4CF4E9133242AD00738FDE /* JSONKit */,
-				5DD104951321886400E49150 /* Extensions */,
-				5DD104A91321886400E49150 /* FayeClient.h */,
-				5DD104AA1321886400E49150 /* FayeClient.m */,
-				5DD104AB1321886400E49150 /* FayeMessage.h */,
-				5DD104AC1321886400E49150 /* FayeMessage.m */,
-				5DD104AD1321886400E49150 /* zimt */,
+				5DEB76C916BAFF6A0053DCAD /* Extensions */,
+				5DEB76DD16BAFF6A0053DCAD /* FayeClient.h */,
+				5DEB76DE16BAFF6A0053DCAD /* FayeClient.m */,
+				5DEB76DF16BAFF6A0053DCAD /* FayeMessage.h */,
+				5DEB76E016BAFF6A0053DCAD /* FayeMessage.m */,
+				5DEB76E116BAFF6A0053DCAD /* JSONKit */,
+				5DEB76E416BAFF6A0053DCAD /* SocketRocket */,
+				5DEB76EC16BAFF6A0053DCAD /* zimt */,
 			);
-			path = FayeObjC;
-			sourceTree = SOURCE_ROOT;
+			name = FayeObjc;
+			path = ../FayeObjc;
+			sourceTree = "<group>";
 		};
-		5DD104951321886400E49150 /* Extensions */ = {
+		5DEB76C916BAFF6A0053DCAD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5DD104961321886400E49150 /* NSDate-UTC.h */,
-				5DD104971321886400E49150 /* NSDate-UTC.m */,
-				5DD104981321886400E49150 /* NSObject+PropertySupport.h */,
-				5DD104991321886400E49150 /* NSObject+PropertySupport.m */,
-				5DD1049A1321886400E49150 /* NSString+InflectionSupport.h */,
-				5DD1049B1321886400E49150 /* NSString+InflectionSupport.m */,
-				5DD1049C1321886400E49150 /* ObjectiveResourceDateFormatter.h */,
-				5DD1049D1321886400E49150 /* ObjectiveResourceDateFormatter.m */,
-				5DD1049E1321886400E49150 /* Serialize */,
+				5DEB76CA16BAFF6A0053DCAD /* NSDate-UTC.h */,
+				5DEB76CB16BAFF6A0053DCAD /* NSDate-UTC.m */,
+				5DEB76CC16BAFF6A0053DCAD /* NSObject+PropertySupport.h */,
+				5DEB76CD16BAFF6A0053DCAD /* NSObject+PropertySupport.m */,
+				5DEB76CE16BAFF6A0053DCAD /* NSString+InflectionSupport.h */,
+				5DEB76CF16BAFF6A0053DCAD /* NSString+InflectionSupport.m */,
+				5DEB76D016BAFF6A0053DCAD /* ObjectiveResourceDateFormatter.h */,
+				5DEB76D116BAFF6A0053DCAD /* ObjectiveResourceDateFormatter.m */,
+				5DEB76D216BAFF6A0053DCAD /* Serialize */,
 			);
-			name = Extensions;
-			path = FayeObjC/Extensions;
-			sourceTree = SOURCE_ROOT;
+			path = Extensions;
+			sourceTree = "<group>";
 		};
-		5DD1049E1321886400E49150 /* Serialize */ = {
+		5DEB76D216BAFF6A0053DCAD /* Serialize */ = {
 			isa = PBXGroup;
 			children = (
-				5DD1049F1321886400E49150 /* NSData+Serialize.h */,
-				5DD104A01321886400E49150 /* NSData+Serialize.m */,
-				5DD104A11321886400E49150 /* NSDate+Serialize.h */,
-				5DD104A21321886400E49150 /* NSDate+Serialize.m */,
-				5DD104A31321886400E49150 /* NSDictionary+KeyTranslation.h */,
-				5DD104A41321886400E49150 /* NSDictionary+KeyTranslation.m */,
-				5DD104A51321886400E49150 /* NSObject+Serialize.h */,
-				5DD104A61321886400E49150 /* NSObject+Serialize.m */,
-				5DD104A71321886400E49150 /* NSString+Serialize.h */,
-				5DD104A81321886400E49150 /* NSString+Serialize.m */,
+				5DEB76D316BAFF6A0053DCAD /* NSData+Serialize.h */,
+				5DEB76D416BAFF6A0053DCAD /* NSData+Serialize.m */,
+				5DEB76D516BAFF6A0053DCAD /* NSDate+Serialize.h */,
+				5DEB76D616BAFF6A0053DCAD /* NSDate+Serialize.m */,
+				5DEB76D716BAFF6A0053DCAD /* NSDictionary+KeyTranslation.h */,
+				5DEB76D816BAFF6A0053DCAD /* NSDictionary+KeyTranslation.m */,
+				5DEB76D916BAFF6A0053DCAD /* NSObject+Serialize.h */,
+				5DEB76DA16BAFF6A0053DCAD /* NSObject+Serialize.m */,
+				5DEB76DB16BAFF6A0053DCAD /* NSString+Serialize.h */,
+				5DEB76DC16BAFF6A0053DCAD /* NSString+Serialize.m */,
 			);
-			name = Serialize;
-			path = FayeObjC/Extensions/Serialize;
-			sourceTree = SOURCE_ROOT;
+			path = Serialize;
+			sourceTree = "<group>";
 		};
-		5DD104AD1321886400E49150 /* zimt */ = {
+		5DEB76E116BAFF6A0053DCAD /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
-				5DD104AE1321886400E49150 /* Vendor */,
-				5DD104B61321886400E49150 /* Zimt */,
+				5DEB76E216BAFF6A0053DCAD /* JSONKit.h */,
+				5DEB76E316BAFF6A0053DCAD /* JSONKit.m */,
 			);
-			name = zimt;
-			path = FayeObjC/zimt;
-			sourceTree = SOURCE_ROOT;
+			path = JSONKit;
+			sourceTree = "<group>";
 		};
-		5DD104AE1321886400E49150 /* Vendor */ = {
+		5DEB76E416BAFF6A0053DCAD /* SocketRocket */ = {
 			isa = PBXGroup;
 			children = (
-				5DD104AF1321886400E49150 /* AsyncSocket */,
+				5DEB76E516BAFF6A0053DCAD /* base64.c */,
+				5DEB76E616BAFF6A0053DCAD /* base64.h */,
+				5DEB76E716BAFF6A0053DCAD /* NSData+SRB64Additions.h */,
+				5DEB76E816BAFF6A0053DCAD /* NSData+SRB64Additions.m */,
+				5DEB76E916BAFF6A0053DCAD /* SocketRocket-Prefix.pch */,
+				5DEB76EA16BAFF6A0053DCAD /* SRWebSocket.h */,
+				5DEB76EB16BAFF6A0053DCAD /* SRWebSocket.m */,
 			);
-			name = Vendor;
-			path = FayeObjC/zimt/Vendor;
-			sourceTree = SOURCE_ROOT;
+			path = SocketRocket;
+			sourceTree = "<group>";
 		};
-		5DD104AF1321886400E49150 /* AsyncSocket */ = {
+		5DEB76EC16BAFF6A0053DCAD /* zimt */ = {
 			isa = PBXGroup;
 			children = (
-				5DD104B01321886400E49150 /* AsyncSocket Documentation.html */,
-				5DD104B11321886400E49150 /* AsyncSocket.h */,
-				5DD104B21321886400E49150 /* AsyncSocket.m */,
-				5DD104B31321886400E49150 /* AsyncUdpSocket.h */,
-				5DD104B41321886400E49150 /* AsyncUdpSocket.m */,
-				5DD104B51321886400E49150 /* changes.txt */,
+				5DEB76ED16BAFF6A0053DCAD /* Zimt */,
 			);
-			name = AsyncSocket;
-			path = FayeObjC/zimt/Vendor/AsyncSocket;
-			sourceTree = SOURCE_ROOT;
+			path = zimt;
+			sourceTree = "<group>";
 		};
-		5DD104B61321886400E49150 /* Zimt */ = {
+		5DEB76ED16BAFF6A0053DCAD /* Zimt */ = {
 			isa = PBXGroup;
 			children = (
-				5DD104B71321886400E49150 /* Zimt.h */,
-				5DD104B81321886400E49150 /* ZTLog.h */,
-				5DD104B91321886400E49150 /* ZTWebSocket.h */,
-				5DD104BA1321886400E49150 /* ZTWebSocket.m */,
 			);
-			name = Zimt;
-			path = FayeObjC/zimt/Zimt;
-			sourceTree = SOURCE_ROOT;
+			path = Zimt;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -364,8 +343,6 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				5DD10431132183C600E49150 /* green.png in Resources */,
 				5DD10432132183C600E49150 /* red.png in Resources */,
-				5DD104C61321886400E49150 /* AsyncSocket Documentation.html in Resources */,
-				5DD104C91321886400E49150 /* changes.txt in Resources */,
 				5D196E0D132FBF1900DF141C /* fayeMac.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,21 +357,21 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* fayeMacAppDelegate.m in Sources */,
 				5DD102ED13213B1F00E49150 /* MainController.m in Sources */,
-				5DD104BB1321886400E49150 /* NSDate-UTC.m in Sources */,
-				5DD104BC1321886400E49150 /* NSObject+PropertySupport.m in Sources */,
-				5DD104BD1321886400E49150 /* NSString+InflectionSupport.m in Sources */,
-				5DD104BE1321886400E49150 /* ObjectiveResourceDateFormatter.m in Sources */,
-				5DD104BF1321886400E49150 /* NSData+Serialize.m in Sources */,
-				5DD104C01321886400E49150 /* NSDate+Serialize.m in Sources */,
-				5DD104C11321886400E49150 /* NSDictionary+KeyTranslation.m in Sources */,
-				5DD104C21321886400E49150 /* NSObject+Serialize.m in Sources */,
-				5DD104C31321886400E49150 /* NSString+Serialize.m in Sources */,
-				5DD104C41321886400E49150 /* FayeClient.m in Sources */,
-				5DD104C51321886400E49150 /* FayeMessage.m in Sources */,
-				5DD104C71321886400E49150 /* AsyncSocket.m in Sources */,
-				5DD104C81321886400E49150 /* AsyncUdpSocket.m in Sources */,
-				5DD104CA1321886400E49150 /* ZTWebSocket.m in Sources */,
-				5D4CF4EC133242AD00738FDE /* JSONKit.m in Sources */,
+				5DEB76EE16BAFF6A0053DCAD /* NSDate-UTC.m in Sources */,
+				5DEB76EF16BAFF6A0053DCAD /* NSObject+PropertySupport.m in Sources */,
+				5DEB76F016BAFF6A0053DCAD /* NSString+InflectionSupport.m in Sources */,
+				5DEB76F116BAFF6A0053DCAD /* ObjectiveResourceDateFormatter.m in Sources */,
+				5DEB76F216BAFF6A0053DCAD /* NSData+Serialize.m in Sources */,
+				5DEB76F316BAFF6A0053DCAD /* NSDate+Serialize.m in Sources */,
+				5DEB76F416BAFF6A0053DCAD /* NSDictionary+KeyTranslation.m in Sources */,
+				5DEB76F516BAFF6A0053DCAD /* NSObject+Serialize.m in Sources */,
+				5DEB76F616BAFF6A0053DCAD /* NSString+Serialize.m in Sources */,
+				5DEB76F716BAFF6A0053DCAD /* FayeClient.m in Sources */,
+				5DEB76F816BAFF6A0053DCAD /* FayeMessage.m in Sources */,
+				5DEB76F916BAFF6A0053DCAD /* JSONKit.m in Sources */,
+				5DEB76FA16BAFF6A0053DCAD /* base64.c in Sources */,
+				5DEB76FB16BAFF6A0053DCAD /* NSData+SRB64Additions.m in Sources */,
+				5DEB76FC16BAFF6A0053DCAD /* SRWebSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +401,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -436,6 +415,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = fayeMac;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -443,6 +423,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_MODEL_TUNING = G5;
@@ -452,6 +434,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = fayeMac;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
