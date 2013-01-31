@@ -38,18 +38,18 @@
   NSTextField *statusLabel;
 }
 
-@property (retain) IBOutlet NSTextView *messagesText;
-@property (retain) IBOutlet NSButton *sendBtn;
-@property (retain) IBOutlet NSTextField *messageField;
-@property (retain) IBOutlet NSTextField *serverField;
-@property (retain) IBOutlet NSTextField *channelField;  
-@property (retain) FayeClient *faye;
-@property (retain) IBOutlet NSButton *connectBtn;
-@property (retain) NSString *serverURLString;
-@property (retain) NSString *serverChannelString;
+@property (strong) IBOutlet NSTextView *messagesText;
+@property (strong) IBOutlet NSButton *sendBtn;
+@property (strong) IBOutlet NSTextField *messageField;
+@property (strong) IBOutlet NSTextField *serverField;
+@property (strong) IBOutlet NSTextField *channelField;  
+@property (strong) FayeClient *faye;
+@property (strong) IBOutlet NSButton *connectBtn;
+@property (strong) NSString *serverURLString;
+@property (strong) NSString *serverChannelString;
 @property (assign) BOOL connected;
-@property (retain) IBOutlet NSImageView *connectIndicator;
-@property (retain) IBOutlet NSTextField *statusLabel;
+@property (strong) IBOutlet NSImageView *connectIndicator;
+@property (strong) IBOutlet NSTextField *statusLabel;
 
 - (IBAction) connectToServer:(id)sender;
 - (IBAction) sendMessage:(id)sender;

@@ -23,9 +23,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface fayeMacAppDelegate : NSObject <NSApplicationDelegate> {
-  NSWindow *window;  
+  NSWindow *__weak window;  
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSWindow *window;
 
 @end

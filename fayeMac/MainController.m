@@ -61,8 +61,12 @@
 
 #pragma mark -
 #pragma mark FayeObjc delegate
-- (void) messageReceived:(NSDictionary *)messageDict {
-  DLog(@"message recieved");
+- (void)fayeClientError:(NSError *)error {
+  NSLog(@"Faye Client Error: %@", [error localizedDescription]);
+}
+
+- (void)messageReceived:(NSDictionary *)messageDict channel:(NSString *)channel {
+  DLog(@"message recieved on channel: %@", channel);
   if([messageDict objectForKey:@"message"]) {    
     [self addLogMessage:[messageDict objectForKey:@"message"]];
   }
@@ -75,6 +79,8 @@
   [self.connectBtn setTitle:@"Disconnect"];
   [connectBtn setAction:@selector(disconnectFromServer:)];
   [self disableFields];
+  NSLog(@"subscribe");
+  [self.faye subscribeToChannel:self.serverChannelString];
   self.statusLabel.stringValue = [NSString stringWithFormat:@"Subscribed to channel: %@", self.channelField.stringValue];
 }
 
@@ -88,6 +94,12 @@
   [connectBtn setAction:@selector(connectToServer:)];
   self.statusLabel.stringValue = @"Disconnected";
 }
+
+- (void)subscriptionFailedWithError:(NSString *)error {
+  [self addLogMessage:@"**** Subscription Failed ****"];
+}
+
+#pragma mark -
 
 - (void) disableFields {
   [self.serverField setEnabled:NO];
@@ -141,9 +153,9 @@
   }
   
   self.faye = nil;
-  self.faye = [[FayeClient alloc] initWithURLString:self.serverURLString channel:self.serverChannelString];
-  self.faye.delegate = self;
-  [faye connectToServer];    
+  self.faye = [[FayeClient alloc] initWithURLString:self.serverURLString channel:nil];
+  self.faye.delegate = self;  
+  [faye connectToServer];
 }
 
 - (IBAction) disconnectFromServer:(id)sender {
@@ -152,10 +164,10 @@
 }
 
 - (IBAction) sendMessage:(id)sender {
-  DLog(@"message %@", [self.messageField stringValue]);
+  DLog(@"send message %@", [self.messageField stringValue]);
   NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys:[self.messageField stringValue], @"message", nil];
   [self.messageField setStringValue:@""];
-  [self.faye sendMessage:messageDict];
+  [self.faye sendMessage:messageDict onChannel:self.serverChannelString];
 }
 
 - (IBAction) clearLog:(id)sender {
@@ -169,18 +181,7 @@
 
 - (void) dealloc
 {
-  self.messagesText = nil;
-  self.sendBtn = nil;
-  self.messageField = nil;
-  self.serverField = nil;
-  self.channelField = nil;
-  self.connectBtn = nil;
   faye.delegate = nil;
-  [faye release];
-  [serverURLString release];
-  [serverChannelString release];
-  self.connectIndicator = nil;
-  [super dealloc];
 }
 
 
