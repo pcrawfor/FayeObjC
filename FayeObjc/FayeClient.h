@@ -54,6 +54,7 @@ enum _fayeStates {
 - (void)disconnectedFromServer;
 - (void)connectionFailed;
 - (void)subscriptionFailedWithError:(NSString *)error;
+- (void)fayeClientError:(NSError *)error;
 
 @end
 
@@ -71,12 +72,12 @@ enum _fayeStates {
   BOOL connectionInitiated;
 }
 
-@property (retain) NSString *fayeURLString;
-@property (retain) SRWebSocket* webSocket;
-@property (retain) NSString *fayeClientId;
+@property (strong) NSString *fayeURLString;
+@property (strong) SRWebSocket* webSocket;
+@property (strong) NSString *fayeClientId;
 @property (assign) BOOL webSocketConnected;
 @property (assign) BOOL connectionInitiated;
-@property (retain) NSString *activeSubChannel;
+@property (strong) NSString *activeSubChannel;
 @property (assign, unsafe_unretained) id <FayeClientDelegate> delegate;
 
 - (id) initWithURLString:(NSString *)aFayeURLString channel:(NSString *)channel;

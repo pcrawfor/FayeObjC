@@ -31,12 +31,13 @@
 // allows definition of private property
 @interface FayeClient ()
 
-@property (retain) NSDictionary *connectionExtension;
+@property (strong) NSDictionary *connectionExtension;
 
 @end
 
 @interface FayeClient (Private)
 
+- (void) passFayeClientError:(NSError *)error;
 - (void) openWebSocketConnection;
 - (void) closeWebSocketConnection;
 - (void) connect;
@@ -59,7 +60,6 @@
 @synthesize fayeClientId;
 @synthesize webSocketConnected;
 @synthesize connectionInitiated;
-@synthesize activeSubChannel;
 @synthesize delegate;
 @synthesize connectionExtension;
 
@@ -74,8 +74,12 @@
     self.fayeURLString = aFayeURLString;
     self.webSocketConnected = NO;
     fayeConnected = NO;
-    self.activeSubChannel = channel;
     openSubscriptions = [[NSMutableArray alloc] init];
+    if(nil != channel) {
+      if(![openSubscriptions containsObject:channel]) {
+        [openSubscriptions addObject:channel];
+      }
+    }
     self.connectionInitiated = NO;    
   }
   return self;
@@ -113,7 +117,7 @@
 - (void) subscribeToChannel:(NSString *)channel {
   if(![openSubscriptions containsObject:channel]) {
     [openSubscriptions addObject:channel];
-  }  
+  }
   [self subscribe:channel];
 }
 
@@ -126,12 +130,12 @@
   return [openSubscriptions containsObject:channel];
 }
 
-- (void) resubscribeOpenSubs {  
+- (void) resubscribeOpenSubs {
   
   // if there are any outstanding open subscriptions resubscribe
   if ([openSubscriptions count] > 0) {    
     NSArray *subs = [NSArray arrayWithArray:openSubscriptions];
-    for(NSString *channel in subs) {      
+    for(NSString *channel in subs) {
       [self subscribeToChannel:channel];
     }
   }
@@ -150,7 +154,6 @@
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
 {      
   self.connectionInitiated = NO;
-  NSLog(@"Error %@", [error localizedDescription]);  
   if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(connectionFailed)]) {
     [self.delegate connectionFailed];
   }  
@@ -182,6 +185,13 @@
 #pragma mark -
 #pragma mark Private
 @implementation FayeClient (Private)
+
+- (void) passFayeClientError:(NSError *)error {
+  if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(fayeClientError:)]) {
+    [self.delegate fayeClientError:error];
+  }
+}
+
 
 #pragma mark -
 #pragma mark WebSocket connection
@@ -286,18 +296,17 @@
  */
 //- (void) publish:(NSDictionary *)messageDict withExt:(NSDictionary *)extension {
 - (void) publish:(NSDictionary *)messageDict channel:(NSString *)channel withExt:(NSDictionary *)extension {    
-  if(!fayeConnected) {    
-    [NSException raise:@"FayeNotConnected" format:@"Faye connection is not open"];
+  if(!fayeConnected) {
+    [self passFayeClientError:[NSError errorWithDomain:@"FayeNotConnected" code:1 userInfo:nil]];
     return;
   }
   
-  if(![openSubscriptions containsObject:channel]) {    
-    NSString *errorMsg = [NSString stringWithFormat:@"Subscription for channel %@ is not open", channel];    
-    [NSException raise:@"SubscriptionNotActive" format:@"Subscription for channel %@ is not open", channel];
+  if(![openSubscriptions containsObject:channel]) {
+    [self passFayeClientError:[NSError errorWithDomain:@"SubscriptionNotActive" code:1 userInfo:nil]];
     return;
   }
   
-  NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", [[NSDate date] timeIntervalSince1970], 1];
+  NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", (int)[[NSDate date] timeIntervalSince1970], 1];
   NSDictionary *dict = nil;
   
   if(nil == extension) {
@@ -314,7 +323,7 @@
 #pragma mark Faye message handling
 - (void) parseFayeMessage:(NSString *)message {  
   // interpret the message(s) 
-  NSArray *messageArray = [message objectFromJSONString];    
+  NSArray *messageArray = [message objectFromJSONString];
   for(NSDictionary *messageDict in messageArray) {
     FayeMessage *fm = [[FayeMessage alloc] initWithDict:messageDict];    
     
@@ -326,11 +335,7 @@
           [self.delegate connectedToServer];
         }
         [self connect];
-        [self resubscribeOpenSubs];
-        // try to sub right after conn      
-        if(nil != self.activeSubChannel) {
-          [self subscribe:self.activeSubChannel];
-        }
+        [self resubscribeOpenSubs];        
       } else {
         NSLog(@"ERROR WITH HANDSHAKE");
       }    
