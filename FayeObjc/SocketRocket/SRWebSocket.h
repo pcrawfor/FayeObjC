@@ -32,7 +32,7 @@ extern NSString *const SRWebSocketErrorDomain;
 
 @interface SRWebSocket : NSObject <NSStreamDelegate>
 
-@property (nonatomic, assign) id <SRWebSocketDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <SRWebSocketDelegate> delegate;
 
 @property (nonatomic, readonly) SRReadyState readyState;
 @property (nonatomic, readonly, strong) NSURL *url;
