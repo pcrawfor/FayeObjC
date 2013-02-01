@@ -29,6 +29,8 @@
 		5DEB76FA16BAFF6A0053DCAD /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76E516BAFF6A0053DCAD /* base64.c */; };
 		5DEB76FB16BAFF6A0053DCAD /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76E816BAFF6A0053DCAD /* NSData+SRB64Additions.m */; };
 		5DEB76FC16BAFF6A0053DCAD /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB76EB16BAFF6A0053DCAD /* SRWebSocket.m */; };
+		5DEB774916BC49770053DCAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DEB774816BC49770053DCAD /* CFNetwork.framework */; };
+		5DEB774B16BC497C0053DCAD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DEB774A16BC497C0053DCAD /* Security.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -94,6 +96,8 @@
 		5DEB76E916BAFF6A0053DCAD /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		5DEB76EA16BAFF6A0053DCAD /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		5DEB76EB16BAFF6A0053DCAD /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		5DEB774816BC49770053DCAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5DEB774A16BC497C0053DCAD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* fayeMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "fayeMac-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* fayeMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fayeMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DEB774B16BC497C0053DCAD /* Security.framework in Frameworks */,
+				5DEB774916BC49770053DCAD /* CFNetwork.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				5DD10076132118ED00E49150 /* CoreServices.framework in Frameworks */,
 			);
@@ -153,6 +159,8 @@
 		29B97314FDCFA39411CA2CEA /* fayeMac */ = {
 			isa = PBXGroup;
 			children = (
+				5DEB774A16BC497C0053DCAD /* Security.framework */,
+				5DEB774816BC49770053DCAD /* CFNetwork.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
