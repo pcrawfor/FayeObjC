@@ -44,7 +44,7 @@
   [nc addObserver:self selector:@selector(keyboardWillHide:) name: UIKeyboardWillHideNotification object:nil];    
   
   self.connected = NO;
-  self.faye = [[FayeClient alloc] initWithURLString:@"ws://YOUR_SERVER_HERE:PORT/faye" channel:@"/testing"];
+  self.faye = [[FayeClient alloc] initWithURLString:@"ws:///YOUR_SERVER_HERE:PORT/faye" channel:@"/YOUR_CHANNEL"];
   self.faye.delegate = self;
   [faye connectToServer];
 }
@@ -79,19 +79,11 @@
   return YES;
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 - (IBAction) sendMessage {
   DLog(@"send message %@", messageTextField.text);    
   NSString *message = [NSString stringWithString:messageTextField.text];
   NSDictionary *messageDict = [NSDictionary dictionaryWithObjectsAndKeys:message, @"message", nil];  
-  [self.faye sendMessage:messageDict];
+  [self.faye sendMessage:messageDict onChannel:@"/test"];
   self.messageTextField.text = @"";
 }
 
@@ -102,28 +94,25 @@
 
 #pragma mark -
 #pragma mark FayeObjc delegate
-- (void) messageReceived:(NSDictionary *)messageDict {
+- (void)fayeClientError:(NSError *)error {
+  NSLog(@"Faye Client Error: %@", [error localizedDescription]);
+}
+
+- (void)messageReceived:(NSDictionary *)messageDict channel:(NSString *)channel {
   DLog(@"message recieved %@", messageDict);
-  if([messageDict objectForKey:@"message"]) {    
+  if([messageDict objectForKey:@"message"]) {
     self.messageView.text = [self.messageView.text stringByAppendingString:[NSString stringWithFormat:@"%@\n", [messageDict objectForKey:@"message"]]]; 
-    //[self.messagesText insertText:[NSString stringWithFormat:@"%@\n", [messageDict objectForKey:@"message"]]];
   }
 }
 
 - (void)connectedToServer {
   DLog(@"Connected");
   self.connected = YES;
-  //[self.connectIndicator setImage:[NSImage imageNamed:@"green.png"]];
-  //[self.connectBtn setTitle:@"Disconnect"];
-  //[connectBtn setAction:@selector(disconnectFromServer:)];
 }
 
 - (void)disconnectedFromServer {
   DLog(@"Disconnected");
   self.connected = NO;
-  //[self.connectIndicator setImage:[NSImage imageNamed:@"red.png"]];
-  //[self.connectBtn setTitle:@"Connect"];
-  //[connectBtn setAction:@selector(connectToServer:)];
 }
 
 #pragma mark -
@@ -138,12 +127,7 @@
 }
 
 - (void)dealloc {
-  [messageTextField release];
-	[editToolbar release];
-  [messageView release];
   faye.delegate = nil;
-  [faye release];
-  [super dealloc];
 }
 
 @end

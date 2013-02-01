@@ -17,11 +17,11 @@
   UITextView *messageView;
 }
 
-@property (retain) FayeClient *faye;
+@property (strong) FayeClient *faye;
 @property (assign) BOOL connected;
-@property (nonatomic, retain) IBOutlet UITextField *messageTextField;
-@property (nonatomic, retain) IBOutlet UIToolbar *editToolbar;
-@property (nonatomic, retain) IBOutlet UITextView *messageView;
+@property (nonatomic, strong) IBOutlet UITextField *messageTextField;
+@property (nonatomic, strong) IBOutlet UIToolbar *editToolbar;
+@property (nonatomic, strong) IBOutlet UITextView *messageView;
 
 - (IBAction) sendMessage;
 - (IBAction) hideKeyboard;
