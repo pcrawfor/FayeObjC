@@ -63,8 +63,7 @@ enum _fayeStates {
   NSString *fayeURLString;
   SRWebSocket* webSocket;
   NSString *fayeClientId;
-  BOOL webSocketConnected;  
-  NSString *activeSubChannel;
+  BOOL webSocketConnected;
   __unsafe_unretained id <FayeClientDelegate> delegate;  
   @private
   BOOL fayeConnected;  
