@@ -63,10 +63,8 @@
 @synthesize delegate;
 @synthesize connectionExtension;
 
-/*
- Example websocket url string
- // ws://localhost:8000/faye
- */
+// Example websocket url string
+// ws://localhost:8000/faye
 - (id) initWithURLString:(NSString *)aFayeURLString channel:(NSString *)channel
 {
   self = [super init];
@@ -212,13 +210,11 @@
 #pragma mark -
 #pragma mark Private Bayeux procotol functions
 
-/* 
- Bayeux Handshake
- "channel": "/meta/handshake",
- "version": "1.0",
- "minimumVersion": "1.0beta",
- "supportedConnectionTypes": ["long-polling", "callback-polling", "iframe", "websocket]
- */
+// Bayeux Handshake
+// "channel": "/meta/handshake",
+// "version": "1.0",
+// "minimumVersion": "1.0beta",
+// "supportedConnectionTypes": ["long-polling", "callback-polling", "iframe", "websocket]
 - (void) handshake {
   NSArray *connTypes = [NSArray arrayWithObjects:@"long-polling", @"callback-polling", @"iframe", @"websocket", nil];   
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:HANDSHAKE_CHANNEL, @"channel", @"1.0", @"version", @"1.0beta", @"minimumVersion", connTypes, @"supportedConnectionTypes", nil];
@@ -226,38 +222,32 @@
   [webSocket send:json];  
 }
 
-/*
- Bayeux Connect
- "channel": "/meta/connect",
- "clientId": "Un1q31d3nt1f13r",
- "connectionType": "long-polling"
- */
+// Bayeux Connect
+// "channel": "/meta/connect",
+// "clientId": "Un1q31d3nt1f13r",
+// "connectionType": "long-polling"
 - (void) connect {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:CONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", @"websocket", @"connectionType", nil];
   NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
 
-/*
- {
- "channel": "/meta/disconnect",
- "clientId": "Un1q31d3nt1f13r"
- }
- */
+// {
+// "channel": "/meta/disconnect",
+// "clientId": "Un1q31d3nt1f13r"
+// }
 - (void) disconnect {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:DISCONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", nil];
   NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
 
-/*
- {
- "channel": "/meta/subscribe",
- "clientId": "Un1q31d3nt1f13r",
- "subscription": "/foo/**"
- }
- */
-- (void) subscribe:(NSString *)channel {  
+// {
+// "channel": "/meta/subscribe",
+// "clientId": "Un1q31d3nt1f13r",
+// "subscription": "/foo/**"
+// }
+- (void) subscribe:(NSString *)channel {
   if(nil == channel) {
     return;
   }
@@ -273,27 +263,24 @@
   [webSocket send:json];
 }
 
-/*
- {
- "channel": "/meta/unsubscribe",
- "clientId": "Un1q31d3nt1f13r",
- "subscription": "/foo/**"
- }
- */
+// {
+// "channel": "/meta/unsubscribe",
+// "clientId": "Un1q31d3nt1f13r",
+// "subscription": "/foo/**"
+// }
 - (void) unsubscribe:(NSString *)channel {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:UNSUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", channel, @"subscription", nil];
   NSString *json = [dict JSONString];  
   [webSocket send:json];
 }
 
-/*
- {
- "channel": "/some/channel",
- "clientId": "Un1q31d3nt1f13r",
- "data": "some application string or JSON encoded object",
- "id": "some unique message id"
- }
- */
+// {
+// "channel": "/some/channel",
+// "clientId": "Un1q31d3nt1f13r",
+// "data": "some application string or JSON encoded object",
+// "id": "some unique message id"
+// }
+
 //- (void) publish:(NSDictionary *)messageDict withExt:(NSDictionary *)extension {
 - (void) publish:(NSDictionary *)messageDict channel:(NSString *)channel withExt:(NSDictionary *)extension {    
   if(!fayeConnected) {
