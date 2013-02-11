@@ -201,9 +201,10 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&writeError];
     
     if (writeError) {
-        NSLog(@"Could not serialize object as JSON string: %@", [writeError localizedDescription]);
+        NSLog(@"Could not serialize object as JSON data: %@", [writeError localizedDescription]);
     } else {
-        [webSocket send:jsonData];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [webSocket send:jsonString];
     }
 }
 
