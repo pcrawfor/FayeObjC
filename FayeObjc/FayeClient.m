@@ -301,11 +301,6 @@
     return;
   }
   
-  if(![openSubscriptions containsObject:channel]) {
-    [self passFayeClientError:[NSError errorWithDomain:@"SubscriptionNotActive" code:1 userInfo:nil]];
-    return;
-  }
-  
   NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", (int)[[NSDate date] timeIntervalSince1970], 1];
   NSDictionary *dict = nil;
   
