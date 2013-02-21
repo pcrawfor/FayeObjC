@@ -26,7 +26,6 @@
 		5DEB772E16BC466B0053DCAD /* NSString+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB771416BC466B0053DCAD /* NSString+Serialize.m */; };
 		5DEB772F16BC466B0053DCAD /* FayeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB771616BC466B0053DCAD /* FayeClient.m */; };
 		5DEB773016BC466B0053DCAD /* FayeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB771816BC466B0053DCAD /* FayeMessage.m */; };
-		5DEB773116BC466B0053DCAD /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB771B16BC466B0053DCAD /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5DEB773216BC466B0053DCAD /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB771D16BC466B0053DCAD /* base64.c */; };
 		5DEB773316BC466B0053DCAD /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB772016BC466B0053DCAD /* NSData+SRB64Additions.m */; };
 		5DEB773416BC466B0053DCAD /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB772316BC466B0053DCAD /* SRWebSocket.m */; };
@@ -70,8 +69,6 @@
 		5DEB771616BC466B0053DCAD /* FayeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FayeClient.m; sourceTree = "<group>"; };
 		5DEB771716BC466B0053DCAD /* FayeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FayeMessage.h; sourceTree = "<group>"; };
 		5DEB771816BC466B0053DCAD /* FayeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FayeMessage.m; sourceTree = "<group>"; };
-		5DEB771A16BC466B0053DCAD /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		5DEB771B16BC466B0053DCAD /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		5DEB771D16BC466B0053DCAD /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
 		5DEB771E16BC466B0053DCAD /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		5DEB771F16BC466B0053DCAD /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
@@ -174,7 +171,6 @@
 				5DEB771616BC466B0053DCAD /* FayeClient.m */,
 				5DEB771716BC466B0053DCAD /* FayeMessage.h */,
 				5DEB771816BC466B0053DCAD /* FayeMessage.m */,
-				5DEB771916BC466B0053DCAD /* JSONKit */,
 				5DEB771C16BC466B0053DCAD /* SocketRocket */,
 				5DEB772416BC466B0053DCAD /* zimt */,
 			);
@@ -213,15 +209,6 @@
 				5DEB771416BC466B0053DCAD /* NSString+Serialize.m */,
 			);
 			path = Serialize;
-			sourceTree = "<group>";
-		};
-		5DEB771916BC466B0053DCAD /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				5DEB771A16BC466B0053DCAD /* JSONKit.h */,
-				5DEB771B16BC466B0053DCAD /* JSONKit.m */,
-			);
-			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		5DEB771C16BC466B0053DCAD /* SocketRocket */ = {
@@ -328,7 +315,6 @@
 				5DEB772E16BC466B0053DCAD /* NSString+Serialize.m in Sources */,
 				5DEB772F16BC466B0053DCAD /* FayeClient.m in Sources */,
 				5DEB773016BC466B0053DCAD /* FayeMessage.m in Sources */,
-				5DEB773116BC466B0053DCAD /* JSONKit.m in Sources */,
 				5DEB773216BC466B0053DCAD /* base64.c in Sources */,
 				5DEB773316BC466B0053DCAD /* NSData+SRB64Additions.m in Sources */,
 				5DEB773416BC466B0053DCAD /* SRWebSocket.m in Sources */,
@@ -349,6 +335,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = fayeiPhone_Prefix.pch;
 				INFOPLIST_FILE = "fayeiPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/libYAJLIPhone_40Compatible\"",
@@ -367,6 +354,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = fayeiPhone_Prefix.pch;
 				INFOPLIST_FILE = "fayeiPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes/libYAJLIPhone_40Compatible\"",
