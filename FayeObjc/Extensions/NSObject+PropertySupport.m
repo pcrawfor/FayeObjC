@@ -10,12 +10,6 @@
 #import "NSObject+PropertySupport.h"
 #import "NSString+InflectionSupport.h"
 
-@interface NSObject()
-
-+ (NSString *) getPropertyType:(NSString *)attributeString;
-
-@end
-
 
 @implementation NSObject (PropertySupport)
 + (NSArray *)propertyNames {
