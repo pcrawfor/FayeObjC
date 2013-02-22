@@ -69,6 +69,7 @@ enum _fayeStates {
   BOOL fayeConnected;  
   NSDictionary *connectionExtension;
   BOOL connectionInitiated;
+  uint32_t messageNumber;
 }
 
 @property (strong) NSString *fayeURLString;
