@@ -197,15 +197,17 @@
 
 - (void) send:(id)object
 {
-    NSError *writeError = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&writeError];
-    
-    if (writeError) {
-        NSLog(@"Could not serialize object as JSON data: %@", [writeError localizedDescription]);
-    } else {
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [webSocket send:jsonString];
-    }
+    [self pipeThroughOutgoingExtensions:object withCallback:^(id object){
+        NSError *writeError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&writeError];
+        
+        if (writeError) {
+            NSLog(@"Could not serialize object as JSON data: %@", [writeError localizedDescription]);
+        } else {
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            [webSocket send:jsonString];
+        }
+    }];
 }
 
 - (void) receive:(id)data
@@ -344,63 +346,99 @@
   [self send:dict];
 }
 
+# pragma mark - Faye extensions
+
+- (void)pipeThroughIncomingExtensions:(NSDictionary *)messageDict withCallback:(FayeClientMessageHandler)callback
+{
+    [self pipeThroughExtensions:messageDict inDirection:@"incoming" withCallback:callback];
+}
+
+- (void)pipeThroughOutgoingExtensions:(NSDictionary *)messageDict withCallback:(FayeClientMessageHandler)callback
+{
+    [self pipeThroughExtensions:messageDict inDirection:@"outgoing" withCallback:callback];
+}
+
+- (void)pipeThroughExtensions:(NSDictionary *)messageDict inDirection:(NSString *)direction withCallback:(FayeClientMessageHandler)callback
+{
+    SEL pipeHandler = nil;
+    
+    if ([direction isEqualToString:@"incoming"]) {
+        pipeHandler = @selector(fayeClientWillReceiveMessage:withCallback:);
+    } else if ([direction isEqualToString:@"outgoing"]) {
+        pipeHandler = @selector(fayeClientWillSendMessage:withCallback:);
+    } else {
+        NSLog(@"You've attempted to pipe a message through an unknown pipe. Choices are \"outgoing\" and \"incoming\"");
+    }
+    
+    if (pipeHandler != nil && [self.delegate respondsToSelector:pipeHandler]) {
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self.delegate performSelector:pipeHandler withObject:messageDict withObject:callback];
+        #pragma clang diagnostic pop
+    } else {
+        callback(messageDict);
+    }
+}
+
 #pragma mark -
 #pragma mark Faye message handling
 - (void) parseFayeMessages:(NSArray *)messages {
-  // interpret the message(s)
-  for(NSDictionary *messageDict in messages) {
-    FayeMessage *fm = [[FayeMessage alloc] initWithDict:messageDict];
+    // interpret the message(s)
+    for(NSDictionary *messageDict in messages) {
+        [self pipeThroughIncomingExtensions:messageDict withCallback:^(NSDictionary *messageDict){
+            FayeMessage *fm = [[FayeMessage alloc] initWithDict:messageDict];
     
-    if ([fm.channel isEqualToString:HANDSHAKE_CHANNEL]) {    
-      if ([fm.successful boolValue]) {
-        self.fayeClientId = fm.clientId;        
-        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(connectedToServer)]) {
-          fayeConnected = YES;
-          [self.delegate connectedToServer];
-        }
-        [self connect];
-        [self resubscribeOpenSubs];        
-      } else {
-        NSLog(@"ERROR WITH HANDSHAKE");
-      }    
-    } else if ([fm.channel isEqualToString:CONNECT_CHANNEL]) {      
-      if ([fm.successful boolValue]) {
-        fayeConnected = YES;
-        [self connect];        
-      } else {
-        NSLog(@"ERROR CONNECTING TO FAYE");
-      }
-    } else if ([fm.channel isEqualToString:DISCONNECT_CHANNEL]) {
-      if ([fm.successful boolValue]) {        
-        fayeConnected = NO;  
-        [self closeWebSocketConnection];
-        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(disconnectedFromServer)]) {
-          [self.delegate disconnectedFromServer];
-        }
-      } else {
-        NSLog(@"ERROR DISCONNECTING TO FAYE");
-      }
-    } else if ([fm.channel isEqualToString:SUBSCRIBE_CHANNEL]) {      
-      if ([fm.successful boolValue]) {
-        NSLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);        
-      } else {
-        NSLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
-        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(subscriptionFailedWithError:)]) {          
-          [self.delegate subscriptionFailedWithError:fm.error];
-        }        
-      }      
-    } else if ([fm.channel isEqualToString:UNSUBSCRIBE_CHANNEL]) {
-      NSLog(@"UNSUBSCRIBED FROM CHANNEL %@ ON FAYE", fm.subscription);
-    } else if ([openSubscriptions containsObject:fm.channel]) {      
-      if(fm.data) {        
-        if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(messageReceived:channel:)]) {          
-          [self.delegate messageReceived:fm.data channel:fm.channel];
-        }
-      }           
-    } else {
-      NSLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
-    }    
-  }  
+            if ([fm.channel isEqualToString:HANDSHAKE_CHANNEL]) {
+              if ([fm.successful boolValue]) {
+                self.fayeClientId = fm.clientId;        
+                if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(connectedToServer)]) {
+                  fayeConnected = YES;
+                  [self.delegate connectedToServer];
+                }
+                [self connect];
+                [self resubscribeOpenSubs];        
+              } else {
+                NSLog(@"ERROR WITH HANDSHAKE");
+              }    
+            } else if ([fm.channel isEqualToString:CONNECT_CHANNEL]) {      
+              if ([fm.successful boolValue]) {
+                fayeConnected = YES;
+                [self connect];        
+              } else {
+                NSLog(@"ERROR CONNECTING TO FAYE");
+              }
+            } else if ([fm.channel isEqualToString:DISCONNECT_CHANNEL]) {
+              if ([fm.successful boolValue]) {        
+                fayeConnected = NO;  
+                [self closeWebSocketConnection];
+                if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(disconnectedFromServer)]) {
+                  [self.delegate disconnectedFromServer];
+                }
+              } else {
+                NSLog(@"ERROR DISCONNECTING TO FAYE");
+              }
+            } else if ([fm.channel isEqualToString:SUBSCRIBE_CHANNEL]) {      
+              if ([fm.successful boolValue]) {
+                NSLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);        
+              } else {
+                NSLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
+                if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(subscriptionFailedWithError:)]) {          
+                  [self.delegate subscriptionFailedWithError:fm.error];
+                }        
+              }      
+            } else if ([fm.channel isEqualToString:UNSUBSCRIBE_CHANNEL]) {
+              NSLog(@"UNSUBSCRIBED FROM CHANNEL %@ ON FAYE", fm.subscription);
+            } else if ([openSubscriptions containsObject:fm.channel]) {      
+              if(fm.data) {        
+                if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(messageReceived:channel:)]) {          
+                  [self.delegate messageReceived:fm.data channel:fm.channel];
+                }
+              }           
+            } else {
+              NSLog(@"NO MATCH FOR CHANNEL %@", fm.channel);      
+            }    
+        }];
+    }
 }
 
 @end

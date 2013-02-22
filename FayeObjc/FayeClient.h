@@ -39,6 +39,8 @@ enum _fayeStates {
   kFayeConnected  
 } fayeStates;
 
+typedef void(^FayeClientMessageHandler)(NSDictionary *);
+
 // Bayeux protocol channels
 #define HANDSHAKE_CHANNEL @"/meta/handshake"
 #define CONNECT_CHANNEL @"/meta/connect"
@@ -54,6 +56,10 @@ enum _fayeStates {
 - (void)connectionFailed;
 - (void)subscriptionFailedWithError:(NSString *)error;
 - (void)fayeClientError:(NSError *)error;
+
+// Delegation implementation of Faye extensions
+- (void)fayeClientWillReceiveMessage:(NSDictionary *)messageDict withCallback:(FayeClientMessageHandler)callback;
+- (void)fayeClientWillSendMessage:(NSDictionary *)messageDict withCallback:(FayeClientMessageHandler)callback;
 
 @end
 
