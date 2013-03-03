@@ -402,6 +402,9 @@
     if ([fm.successful boolValue]) {
       NSLog(@"SUBSCRIBED TO CHANNEL %@ ON FAYE", fm.subscription);
       [openSubscriptions addObject:fm.subscription];
+      if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(didSubscribeToChannel:)]) {          
+        [self.delegate didSubscribeToChannel:fm.subscription];
+      }
     } else {
       NSLog(@"ERROR SUBSCRIBING TO %@ WITH ERROR %@", fm.subscription, fm.error);
       if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(subscriptionFailedWithError:)]) {          
@@ -411,6 +414,9 @@
   } else if ([fm.channel isEqualToString:UNSUBSCRIBE_CHANNEL]) {
     NSLog(@"UNSUBSCRIBED FROM CHANNEL %@ ON FAYE", fm.subscription);
     [openSubscriptions removeObject:fm.subscription];
+    if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(didUnsubscribeFromChannel:)]) {          
+      [self.delegate didUnsubscribeFromChannel:fm.subscription];
+    }
   } else if ([openSubscriptions containsObject:fm.channel]) {      
     if(fm.data) {        
       if(self.delegate != NULL && [self.delegate respondsToSelector:@selector(messageReceived:channel:)]) {          
