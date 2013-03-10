@@ -54,6 +54,8 @@ typedef void(^FayeClientMessageHandler)(NSDictionary *);
 - (void)connectedToServer;
 - (void)disconnectedFromServer;
 - (void)connectionFailed;
+- (void)didSubscribeToChannel:(NSString *)channel;
+- (void)didUnsubscribeFromChannel:(NSString *)channel;
 - (void)subscriptionFailedWithError:(NSString *)error;
 - (void)fayeClientError:(NSError *)error;
 
@@ -94,6 +96,6 @@ typedef void(^FayeClientMessageHandler)(NSDictionary *);
 - (void) subscribeToChannel:(NSString *)channel;
 - (void) unsubscribeFromChannel:(NSString *)channel;
 - (BOOL) isSubscribedToChannel:(NSString *)channel;
-- (void) resubscribeOpenSubs;
+- (void) subscribeQueuedSubscriptions;
 
 @end
