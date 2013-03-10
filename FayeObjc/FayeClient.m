@@ -1,3 +1,4 @@
+
 /* The MIT License
  
  Copyright (c) 2011 Paul Crawford
@@ -46,7 +47,10 @@
 - (void) subscribe:(NSString *)channel;
 - (void) unsubscribe:(NSString *)channel;
 - (void) publish:(NSDictionary *)messageDict channel:(NSString *)channel withExt:(NSDictionary *)extension;
-- (void) parseFayeMessage:(NSString *)message;
+- (void) parseFayeMessages:(NSArray *)messages;
+
+- (void) send:(id)object;
+- (void) receive:(id)data;
 
 @end
 
@@ -157,9 +161,9 @@
   }  
 }
 
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(NSString *)message;
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
 {    
-  [self parseFayeMessage:message];
+  [self receive:message];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {  
@@ -211,6 +215,35 @@
   return [self base36Encode:messageNumber];
 }
 
+- (void) send:(id)object
+{
+    NSError *writeError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&writeError];
+    
+    if (writeError) {
+        NSLog(@"Could not serialize object as JSON data: %@", [writeError localizedDescription]);
+    } else {
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [webSocket send:jsonString];
+    }
+}
+
+- (void) receive:(id)data
+{
+    if ([data isKindOfClass:[NSString class]]) {
+        data = [data dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    NSError *readError = nil;
+    NSArray *messages = [NSJSONSerialization JSONObjectWithData:data options:0 error:&readError];
+    
+    if (readError) {
+        NSLog(@"Could not deserialize JSON as object: %@", [readError localizedDescription]);
+    } else {
+        [self parseFayeMessages:messages];
+    }
+}
+
 #pragma mark -
 #pragma mark WebSocket connection
 - (void) openWebSocketConnection {
@@ -238,8 +271,7 @@
 - (void) handshake {
   NSArray *connTypes = [NSArray arrayWithObjects:@"long-polling", @"callback-polling", @"iframe", @"websocket", nil];   
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:HANDSHAKE_CHANNEL, @"channel", @"1.0", @"version", @"1.0beta", @"minimumVersion", connTypes, @"supportedConnectionTypes", nil];
-  NSString *json = [dict JSONString];
-  [webSocket send:json];  
+  [self send:dict];
 }
 
 // Bayeux Connect
@@ -248,8 +280,7 @@
 // "connectionType": "long-polling"
 - (void) connect {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:CONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", @"websocket", @"connectionType", nil];
-  NSString *json = [dict JSONString];  
-  [webSocket send:json];
+  [self send:dict];
 }
 
 // {
@@ -258,8 +289,7 @@
 // }
 - (void) disconnect {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:DISCONNECT_CHANNEL, @"channel", self.fayeClientId, @"clientId", nil];
-  NSString *json = [dict JSONString];  
-  [webSocket send:json];
+  [self send:dict];
 }
 
 // {
@@ -279,8 +309,7 @@
     dict = [NSDictionary dictionaryWithObjectsAndKeys:SUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", channel, @"subscription", self.connectionExtension, @"ext", nil];
   }
   
-  NSString *json = [dict JSONString];    
-  [webSocket send:json];
+  [self send:dict];
 }
 
 // {
@@ -290,8 +319,7 @@
 // }
 - (void) unsubscribe:(NSString *)channel {
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:UNSUBSCRIBE_CHANNEL, @"channel", self.fayeClientId, @"clientId", channel, @"subscription", nil];
-  NSString *json = [dict JSONString];  
-  [webSocket send:json];
+  [self send:dict];
 }
 
 // {
@@ -322,17 +350,15 @@
     dict = [NSDictionary dictionaryWithObjectsAndKeys:channel, @"channel", self.fayeClientId, @"clientId", messageDict, @"data", messageId, @"id", extension, @"ext",nil];
   }
   
-  NSString *json = [dict JSONString];  
-  [webSocket send:json];
+  [self send:dict];
 }
 
 #pragma mark -
 #pragma mark Faye message handling
-- (void) parseFayeMessage:(NSString *)message {  
-  // interpret the message(s) 
-  NSArray *messageArray = [message objectFromJSONString];
-  for(NSDictionary *messageDict in messageArray) {
-    FayeMessage *fm = [[FayeMessage alloc] initWithDict:messageDict];    
+- (void) parseFayeMessages:(NSArray *)messages {
+  // interpret the message(s)
+  for(NSDictionary *messageDict in messages) {
+    FayeMessage *fm = [[FayeMessage alloc] initWithDict:messageDict];
     
     if ([fm.channel isEqualToString:HANDSHAKE_CHANNEL]) {    
       if ([fm.successful boolValue]) {
