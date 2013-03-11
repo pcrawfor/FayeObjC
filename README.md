@@ -81,6 +81,15 @@ Included in the repository is a sample XCode project for Mac that provides a sim
 
 The fayeMac sample project allows you to test out any Faye server.
 
+# Development
+
+Want to help us make FayeObjC the best Faye client it can be? Clone, initialize the submodules, and go for it!
+
+    git clone git@github.com:pcrawfor/FayeObjC.git
+    cd FayeObjC
+    git submodule init
+    git submodule update
+
 # Credits
 
 ## Faye
