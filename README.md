@@ -4,7 +4,7 @@ I've begun work on an update to FayeObjC. I am also porting the source over to b
 
 # FayeObjC
 
-A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implemented atop the SocketRocket Objective-C web socket library and will work on both Mac and iPhone projects. JSON parsing is handled using the excellent JSONKit (https://github.com/johnezang/JSONKit) library which is included in the FayeObjC source folder.
+A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implemented atop the SocketRocket Objective-C web socket library and will work on both Mac and iPhone projects.
 
 # Mac Test Client
 
@@ -105,11 +105,6 @@ Check out the Faye project here:
 SocketRocket is a conforming Objective-C WebSocket client library by the people at Square.
 
 [https://github.com/square/SocketRocket](https://github.com/square/SocketRocket)
-
-## JSONKit
-JSONKit is an awesome JSON parser written in Objective-C which is both simple and extremely fast.
-
-[https://github.com/johnezang/JSONKit](https://github.com/johnezang/JSONKit)
 
 # License
 
