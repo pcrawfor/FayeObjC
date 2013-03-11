@@ -16,20 +16,9 @@ If you want to use the mac client to connect and test your faye server just unzi
 
 The Mac client is available in the Downloads section of the repo - click "Downloads" to access it.
 
-# Building the library
+# Installation
 
-Using it in a Mac project:
-
-Using FayeObjC is as simple as adding the FayeObjC source folder to your Xcode project directory and then adding it to the project.  FayeObjc has only one dependency the CoreServices.framework on Mac OS X which is used by AsyncSocket (part of the zimt websocket library).  
-
-Add the CoreServices.framework to your project by right clicking on Linked Frameworks in the Project and selecting Add->Existing Frameworks...
-
-
-Using it in an iPhone project:
-
-Using FayeObjC is as simple as adding the FayeObjC source folder to your Xcode project directory and then adding it to the project.  FayeObjc has only one dependency the CFNetwork.framework on iOS which is used by AsyncSocket (part of the zimt websocket library).
-
-Add the CFNetwork.framework to your project by right clicking on Linked Frameworks in the Project and selecting Add->Existing Frameworks...
+TODO: Write up cocoapods installation instructions.
 
 ## Working with the library
 
