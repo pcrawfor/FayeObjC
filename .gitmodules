@@ -1,0 +1,3 @@
+[submodule "lib/SocketRocket"]
+	path = lib/SocketRocket
+	url = git@github.com:square/SocketRocket.git

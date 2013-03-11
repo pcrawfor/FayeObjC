@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:lib/SocketRocket/SocketRocket.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FayeObjC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:examples/iOS/iOS Example App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:examples/OSX/Mac Example App.xcodeproj">
+   </FileRef>
+</Workspace>

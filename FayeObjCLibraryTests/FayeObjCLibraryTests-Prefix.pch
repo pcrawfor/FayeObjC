@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'FayeObjCLibraryTests' target in the 'FayeObjCLibraryTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <SenTestingKit/SenTestingKit.h>
+#endif

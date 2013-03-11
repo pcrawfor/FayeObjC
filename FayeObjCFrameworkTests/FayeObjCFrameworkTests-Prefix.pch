@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'FayeObjCFrameworkTests' target in the 'FayeObjCFrameworkTests' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+    #import <SenTestingKit/SenTestingKit.h>
+#endif
