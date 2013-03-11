@@ -1,12 +1,10 @@
 # 2.0
 
-I've begun work on an update to FayeObjC, this update will reorganize the project source a bit but mainly will be switching out the websocket library from zimt to use SocketRocket (https://github.com/square/SocketRocket)
-
-I am also porting the source over to be ARC compatible, once this work is done I'll keep the current master around as a non-ARC branch for those that wish to use it.
+I've begun work on an update to FayeObjC. I am also porting the source over to be ARC compatible, once this work is done I'll keep the current master around as a non-ARC branch for those that wish to use it.
 
 # FayeObjC
 
-A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implementing on top of the zimt Objective-C web socket library and will work on both Mac and iPhone projects. JSON parsing is handled using the excellent JSONKit (https://github.com/johnezang/JSONKit) library which is included in the FayeObjC source folder.
+A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implemented atop the SocketRocket Objective-C web socket library and will work on both Mac and iPhone projects. JSON parsing is handled using the excellent JSONKit (https://github.com/johnezang/JSONKit) library which is included in the FayeObjC source folder.
 
 # Mac Test Client
 
@@ -103,10 +101,10 @@ Check out the Faye project here:
 
 [http://faye.jcoglan.com](http://faye.jcoglan.com)
 
-## ZTWebSocket
-ZTWebSocket is a websocket library built on top of AsyncSocket which provides an easy to use interface for working with websocket connections
+## SocketRocket
+SocketRocket is a conforming Objective-C WebSocket client library by the people at Square.
 
-[https://github.com/esad/zimt](https://github.com/esad/zimt)
+[https://github.com/square/SocketRocket](https://github.com/square/SocketRocket)
 
 ## JSONKit
 JSONKit is an awesome JSON parser written in Objective-C which is both simple and extremely fast.
