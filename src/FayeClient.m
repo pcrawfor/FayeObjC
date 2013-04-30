@@ -193,6 +193,8 @@
 #pragma mark Deallocation
 - (void) dealloc
 {
+  // clean up any existing socket
+  [self closeWebSocketConnection];
   self.delegate = nil;
 }
 
@@ -263,17 +265,19 @@
 #pragma mark -
 #pragma mark WebSocket connection
 - (void) openWebSocketConnection {
-  // clean up any existing socket    
-  [webSocket setDelegate:nil];
-  [webSocket close];
+  // clean up any existing socket
+  [self closeWebSocketConnection];
+  
   webSocket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.fayeURLString]]];
   webSocket.delegate = self;
   self.connectionInitiated = YES;
   [webSocket open];
 }
 
-- (void) closeWebSocketConnection { 
-  [webSocket close];	    
+- (void) closeWebSocketConnection {
+  [webSocket setDelegate:nil];
+  [webSocket close];
+  webSocket = nil;
 }
 
 #pragma mark -
