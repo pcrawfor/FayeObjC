@@ -8,7 +8,7 @@
 
 #import "objc/runtime.h"
 #import "NSObject+PropertySupport.h"
-#import "NSString+InflectionSupport.h"
+#import "NSString+FayeInflectionSupport.h"
 
 
 @implementation NSObject (PropertySupport)
@@ -82,7 +82,7 @@
 }
 
 + (id) propertyClass:(NSString *)className {
-	return NSClassFromString([className toClassName]);
+	return NSClassFromString([className faye_toClassName]);
 }
 
 @end

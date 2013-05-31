@@ -13,6 +13,10 @@
 		8D07623316ED2ABC002D5F3D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D07620616ED29C5002D5F3D /* SenTestingKit.framework */; };
 		8D07623616ED2ABC002D5F3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D07622416ED2ABC002D5F3D /* Foundation.framework */; };
 		8D07623916ED2ABC002D5F3D /* libFayeObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D07622316ED2ABC002D5F3D /* libFayeObjC.a */; };
+		8D748B4317584A05008BF25D /* NSString+FayeInflectionSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D748B4117584A05008BF25D /* NSString+FayeInflectionSupport.h */; };
+		8D748B4417584A05008BF25D /* NSString+FayeInflectionSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D748B4117584A05008BF25D /* NSString+FayeInflectionSupport.h */; };
+		8D748B4517584A05008BF25D /* NSString+FayeInflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D748B4217584A05008BF25D /* NSString+FayeInflectionSupport.m */; };
+		8D748B4617584A05008BF25D /* NSString+FayeInflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D748B4217584A05008BF25D /* NSString+FayeInflectionSupport.m */; };
 		8DF03A5116ED90C8000A0035 /* FayeClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A2916ED90C8000A0035 /* FayeClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DF03A5216ED90C8000A0035 /* FayeClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A2916ED90C8000A0035 /* FayeClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DF03A5516ED90C8000A0035 /* FayeMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A2B16ED90C8000A0035 /* FayeMessage.h */; };
@@ -21,8 +25,6 @@
 		8DF047E216ED9876000A0035 /* NSDate-UTC.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A7D16ED9862000A0035 /* NSDate-UTC.h */; };
 		8DF047E516ED9876000A0035 /* NSObject+PropertySupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A8016ED9862000A0035 /* NSObject+PropertySupport.h */; };
 		8DF047E616ED9876000A0035 /* NSObject+PropertySupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A8016ED9862000A0035 /* NSObject+PropertySupport.h */; };
-		8DF047E916ED9876000A0035 /* NSString+InflectionSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A8316ED9862000A0035 /* NSString+InflectionSupport.h */; };
-		8DF047EA16ED9876000A0035 /* NSString+InflectionSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A8316ED9862000A0035 /* NSString+InflectionSupport.h */; };
 		8DF047ED16ED9876000A0035 /* ObjectiveResourceDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A8616ED9862000A0035 /* ObjectiveResourceDateFormatter.h */; };
 		8DF047EE16ED9876000A0035 /* ObjectiveResourceDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A8616ED9862000A0035 /* ObjectiveResourceDateFormatter.h */; };
 		8DF047F116ED9876000A0035 /* NSData+Serialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF03A8916ED9862000A0035 /* NSData+Serialize.h */; };
@@ -40,7 +42,6 @@
 		8DF0556F16ED9929000A0035 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DF0556B16ED9929000A0035 /* InfoPlist.strings */; };
 		8DF0557216ED995D000A0035 /* NSDate-UTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A7E16ED9862000A0035 /* NSDate-UTC.m */; };
 		8DF0557416ED995D000A0035 /* NSObject+PropertySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8116ED9862000A0035 /* NSObject+PropertySupport.m */; };
-		8DF0557616ED995D000A0035 /* NSString+InflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8416ED9862000A0035 /* NSString+InflectionSupport.m */; };
 		8DF0557816ED995D000A0035 /* ObjectiveResourceDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8716ED9862000A0035 /* ObjectiveResourceDateFormatter.m */; };
 		8DF0557A16ED995D000A0035 /* NSData+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8A16ED9862000A0035 /* NSData+Serialize.m */; };
 		8DF0557C16ED995D000A0035 /* NSDate+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8C16ED9862000A0035 /* NSDate+Serialize.m */; };
@@ -54,7 +55,6 @@
 		8DF0558916ED99F2000A0035 /* FayeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A2C16ED90C8000A0035 /* FayeMessage.m */; };
 		8DF0558A16ED99F2000A0035 /* NSDate-UTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A7E16ED9862000A0035 /* NSDate-UTC.m */; };
 		8DF0558B16ED99F2000A0035 /* NSObject+PropertySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8116ED9862000A0035 /* NSObject+PropertySupport.m */; };
-		8DF0558C16ED99F2000A0035 /* NSString+InflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8416ED9862000A0035 /* NSString+InflectionSupport.m */; };
 		8DF0558D16ED99F2000A0035 /* ObjectiveResourceDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8716ED9862000A0035 /* ObjectiveResourceDateFormatter.m */; };
 		8DF0558E16ED99F2000A0035 /* NSData+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8A16ED9862000A0035 /* NSData+Serialize.m */; };
 		8DF0558F16ED99F2000A0035 /* NSDate+Serialize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF03A8C16ED9862000A0035 /* NSDate+Serialize.m */; };
@@ -148,6 +148,8 @@
 		8D07622416ED2ABC002D5F3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D07623216ED2ABC002D5F3D /* FayeObjCLibraryTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FayeObjCLibraryTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D07623416ED2ABC002D5F3D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		8D748B4117584A05008BF25D /* NSString+FayeInflectionSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FayeInflectionSupport.h"; sourceTree = "<group>"; };
+		8D748B4217584A05008BF25D /* NSString+FayeInflectionSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FayeInflectionSupport.m"; sourceTree = "<group>"; };
 		8DF03A2916ED90C8000A0035 /* FayeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FayeClient.h; sourceTree = "<group>"; };
 		8DF03A2A16ED90C8000A0035 /* FayeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FayeClient.m; sourceTree = "<group>"; };
 		8DF03A2B16ED90C8000A0035 /* FayeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FayeMessage.h; sourceTree = "<group>"; };
@@ -156,8 +158,6 @@
 		8DF03A7E16ED9862000A0035 /* NSDate-UTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-UTC.m"; sourceTree = "<group>"; };
 		8DF03A8016ED9862000A0035 /* NSObject+PropertySupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertySupport.h"; sourceTree = "<group>"; };
 		8DF03A8116ED9862000A0035 /* NSObject+PropertySupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertySupport.m"; sourceTree = "<group>"; };
-		8DF03A8316ED9862000A0035 /* NSString+InflectionSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+InflectionSupport.h"; sourceTree = "<group>"; };
-		8DF03A8416ED9862000A0035 /* NSString+InflectionSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+InflectionSupport.m"; sourceTree = "<group>"; };
 		8DF03A8616ED9862000A0035 /* ObjectiveResourceDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveResourceDateFormatter.h; sourceTree = "<group>"; };
 		8DF03A8716ED9862000A0035 /* ObjectiveResourceDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveResourceDateFormatter.m; sourceTree = "<group>"; };
 		8DF03A8916ED9862000A0035 /* NSData+Serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Serialize.h"; sourceTree = "<group>"; };
@@ -3537,6 +3537,15 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
+		8D748B4017584A05008BF25D /* NSString+FayeInflectionSupport */ = {
+			isa = PBXGroup;
+			children = (
+				8D748B4117584A05008BF25D /* NSString+FayeInflectionSupport.h */,
+				8D748B4217584A05008BF25D /* NSString+FayeInflectionSupport.m */,
+			);
+			path = "NSString+FayeInflectionSupport";
+			sourceTree = "<group>";
+		};
 		8DF03A1416ED90C8000A0035 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -3554,7 +3563,7 @@
 			children = (
 				8DF03A7C16ED9862000A0035 /* NSDate+UTC */,
 				8DF03A7F16ED9862000A0035 /* NSObject+PropertySupport */,
-				8DF03A8216ED9862000A0035 /* NSString+InflectionSupport */,
+				8D748B4017584A05008BF25D /* NSString+FayeInflectionSupport */,
 				8DF03A8516ED9862000A0035 /* ObjectiveResourceDateFormatter */,
 				8DF03A8816ED9862000A0035 /* Serialize */,
 				8DF03A9316ED9862000A0035 /* SocketRocket */,
@@ -3578,15 +3587,6 @@
 				8DF03A8116ED9862000A0035 /* NSObject+PropertySupport.m */,
 			);
 			path = "NSObject+PropertySupport";
-			sourceTree = "<group>";
-		};
-		8DF03A8216ED9862000A0035 /* NSString+InflectionSupport */ = {
-			isa = PBXGroup;
-			children = (
-				8DF03A8316ED9862000A0035 /* NSString+InflectionSupport.h */,
-				8DF03A8416ED9862000A0035 /* NSString+InflectionSupport.m */,
-			);
-			path = "NSString+InflectionSupport";
 			sourceTree = "<group>";
 		};
 		8DF03A8516ED9862000A0035 /* ObjectiveResourceDateFormatter */ = {
@@ -8012,13 +8012,13 @@
 				8DF03A5616ED90C8000A0035 /* FayeMessage.h in Headers */,
 				8DF047E216ED9876000A0035 /* NSDate-UTC.h in Headers */,
 				8DF047E616ED9876000A0035 /* NSObject+PropertySupport.h in Headers */,
-				8DF047EA16ED9876000A0035 /* NSString+InflectionSupport.h in Headers */,
 				8DF047EE16ED9876000A0035 /* ObjectiveResourceDateFormatter.h in Headers */,
 				8DF047F216ED9876000A0035 /* NSData+Serialize.h in Headers */,
 				8DF047F616ED9876000A0035 /* NSDate+Serialize.h in Headers */,
 				8DF047FA16ED9876000A0035 /* NSDictionary+KeyTranslation.h in Headers */,
 				8DF047FE16ED9876000A0035 /* NSObject+Serialize.h in Headers */,
 				8DF0480216ED9876000A0035 /* NSString+Serialize.h in Headers */,
+				8D748B4417584A05008BF25D /* NSString+FayeInflectionSupport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8030,13 +8030,13 @@
 				8DF03A5516ED90C8000A0035 /* FayeMessage.h in Headers */,
 				8DF047E116ED9876000A0035 /* NSDate-UTC.h in Headers */,
 				8DF047E516ED9876000A0035 /* NSObject+PropertySupport.h in Headers */,
-				8DF047E916ED9876000A0035 /* NSString+InflectionSupport.h in Headers */,
 				8DF047ED16ED9876000A0035 /* ObjectiveResourceDateFormatter.h in Headers */,
 				8DF047F116ED9876000A0035 /* NSData+Serialize.h in Headers */,
 				8DF047F516ED9876000A0035 /* NSDate+Serialize.h in Headers */,
 				8DF047F916ED9876000A0035 /* NSDictionary+KeyTranslation.h in Headers */,
 				8DF047FD16ED9876000A0035 /* NSObject+Serialize.h in Headers */,
 				8DF0480116ED9876000A0035 /* NSString+Serialize.h in Headers */,
+				8D748B4317584A05008BF25D /* NSString+FayeInflectionSupport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8250,13 +8250,13 @@
 				8DF0558416ED996A000A0035 /* FayeMessage.m in Sources */,
 				8DF0557216ED995D000A0035 /* NSDate-UTC.m in Sources */,
 				8DF0557416ED995D000A0035 /* NSObject+PropertySupport.m in Sources */,
-				8DF0557616ED995D000A0035 /* NSString+InflectionSupport.m in Sources */,
 				8DF0557816ED995D000A0035 /* ObjectiveResourceDateFormatter.m in Sources */,
 				8DF0557A16ED995D000A0035 /* NSData+Serialize.m in Sources */,
 				8DF0557C16ED995D000A0035 /* NSDate+Serialize.m in Sources */,
 				8DF0557E16ED995D000A0035 /* NSDictionary+KeyTranslation.m in Sources */,
 				8DF0558016ED995D000A0035 /* NSObject+Serialize.m in Sources */,
 				8DF0558216ED995D000A0035 /* NSString+Serialize.m in Sources */,
+				8D748B4517584A05008BF25D /* NSString+FayeInflectionSupport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8275,13 +8275,13 @@
 				8DF0558916ED99F2000A0035 /* FayeMessage.m in Sources */,
 				8DF0558A16ED99F2000A0035 /* NSDate-UTC.m in Sources */,
 				8DF0558B16ED99F2000A0035 /* NSObject+PropertySupport.m in Sources */,
-				8DF0558C16ED99F2000A0035 /* NSString+InflectionSupport.m in Sources */,
 				8DF0558D16ED99F2000A0035 /* ObjectiveResourceDateFormatter.m in Sources */,
 				8DF0558E16ED99F2000A0035 /* NSData+Serialize.m in Sources */,
 				8DF0558F16ED99F2000A0035 /* NSDate+Serialize.m in Sources */,
 				8DF0559016ED99F2000A0035 /* NSDictionary+KeyTranslation.m in Sources */,
 				8DF0559116ED99F2000A0035 /* NSObject+Serialize.m in Sources */,
 				8DF0559216ED99F2000A0035 /* NSString+Serialize.m in Sources */,
+				8D748B4617584A05008BF25D /* NSString+FayeInflectionSupport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
