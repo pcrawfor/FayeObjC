@@ -82,7 +82,7 @@ typedef void(^FayeClientMessageHandler)(NSDictionary *);
 @property (strong) NSString *fayeURLString;
 @property (strong) SRWebSocket* webSocket;
 @property (strong) NSString *fayeClientId;
-@property (assign) BOOL webSocketConnected;
+@property (nonatomic, readonly) BOOL webSocketConnected;
 @property (assign) BOOL connectionInitiated;
 @property (strong) NSString *activeSubChannel;
 @property (assign, unsafe_unretained) id <FayeClientDelegate> delegate;

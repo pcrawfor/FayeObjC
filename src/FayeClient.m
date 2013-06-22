@@ -64,7 +64,6 @@
 @synthesize fayeURLString;
 @synthesize webSocket;
 @synthesize fayeClientId;
-@synthesize webSocketConnected;
 @synthesize connectionInitiated;
 @synthesize delegate;
 @synthesize connectionExtension;
@@ -76,7 +75,6 @@
   self = [super init];
   if (self != nil) {
     self.fayeURLString = aFayeURLString;
-    self.webSocketConnected = NO;
     fayeConnected = NO;
     queuedSubscriptions = [[NSMutableSet alloc] init];
     pendingSubscriptions = [[NSMutableSet alloc] init];
@@ -151,12 +149,14 @@
   }
 }
 
+- (BOOL)webSocketConnected { return self.webSocket.readyState == SR_OPEN; }
++ (NSSet *)keyPathsForValuesAffectingWebSocketConnected { return [NSSet setWithObject:@"websocket.readyState"]; }
+
 #pragma -
 #pragma mark SRWebSocketDelegate
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket;
-{  
-  self.webSocketConnected = YES;
+{
   self.connectionInitiated = NO;
   [self handshake];
 }
@@ -176,7 +176,6 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {  
   self.connectionInitiated = NO;
-  self.webSocketConnected = NO;  
   fayeConnected = NO;
   
   [queuedSubscriptions unionSet:pendingSubscriptions];
