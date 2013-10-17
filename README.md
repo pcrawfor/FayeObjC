@@ -1,8 +1,10 @@
-# 2.0
-
-I've begun work on an update to FayeObjC. I am also porting the source over to be ARC compatible, once this work is done I'll keep the current master around as a non-ARC branch for those that wish to use it.
-
 # FayeObjC
+
+2.0 is now live on the master branch.
+
+Thanks to steveluscher for all the hard work on getting 2.0 ready to ship.
+
+## About
 
 A simple Objective-C client library for the Faye publish-subscribe messaging server. FayeObjC is implemented atop the SocketRocket Objective-C web socket library and will work on both Mac and iPhone projects.
 
