@@ -1,7 +1,5 @@
-require.paths.unshift(__dirname + "/vendor");
-
 var http = require('http'),
-    faye = require('faye-node');
+    faye = require('./vendor/faye-node');
 
 var bayeux = new faye.NodeAdapter({
   mount:    '/faye',
